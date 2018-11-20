@@ -1,0 +1,3 @@
+	driver.findElement(By.linkText("Account")).click();
+		System.out.println(driver.findElement(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div[2]/div/div/div[2]/div/div[2]/div[2]/div/header/div/div[2]/div/div[1]/h3")).getText());
+	
