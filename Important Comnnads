@@ -1,0 +1,22 @@
+> To instantiate Chrome Browser:
+	 System.setProperty("webdriver.chrome.driver", "C:\\Users\\ffarooq\\Box Sync\\Box Sync\\Non Project\\Selenium\\chromedriver.exe");
+	 WebDriver driver = new ChromeDriver();
+   
+> To Pause Execution for few seconds:
+  Thread.sleep(500); //parameter is milliseconds
+
+> To Find Which Browser is Currently Used:
+	 Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+	 String browserName = cap.getBrowserName().toLowerCase();
+	 System.out.println(browserName);
+      
+> To Click / Enter Date in calendar picker field:
+  String startDate = "01/01/2018";
+  ((JavascriptExecutor)driver).executeScript("document.getElementById('<Element's ID value>').setAttribute('value','"+startDate+"')");
+  
+> To Maximize the test window:
+  driver.manage().window().maximize();
+  
+> To Click 'Ok' on alert or message pop up:
+  Alert alert = driver.switchTo().alert();
+  alert.accept();
