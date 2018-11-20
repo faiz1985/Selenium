@@ -1,0 +1,43 @@
+public class robinHood {
+
+	static WebDriver driver;
+	
+	public static void initializeBrowser() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\ffarooq\\Box Sync\\Box Sync\\Non Project\\Selenium\\chromedriver.exe");
+		
+		driver = new ChromeDriver();
+		driver.get("https://www.robinhood.com");
+		//return driver;
+	}
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		initializeBrowser();
+		Thread.sleep(500);
+
+		if (driver.findElement(By.linkText("Log In")).isDisplayed()) {
+			driver.findElement(By.linkText("Log In")).click();
+		}
+		String currentURL = driver.getCurrentUrl();
+		if (currentURL.equals("https://robinhood.com/login")) {
+			Thread.sleep(500);
+			driver.findElement(By.name("username")).sendKeys("");
+			driver.findElement(By.name("password")).sendKeys("");
+			driver.findElement(By.className("_1q0oQo76jB7KFKWPCMPzDW")).click();
+		}
+		Thread.sleep(2000);
+		if (driver.findElement(By.linkText("Home")).isDisplayed()) {
+			System.out.println("Log in Successful");
+		}
+		Thread.sleep(5000);
+		String jlt = driver.findElement(By.className("_3HLJ3tNpwWnaSGO61Xz-VA")).getText();
+		System.out.println(jlt);
+		//if (jlt.equals("BIIB")) {
+			//System.out.println("Value of " + jlt + " stock is: " + driver.findElement(By.className("_3HND1vAA76osvu3h5VpPv6")).getLocation());
+			System.out.println("Value of " + jlt + " " + driver.findElement(By.className("HLLcdC0Cx8ANzdVHjLC-E")).getText() + " stocks is: " + driver.findElement(By.xpath("//*[@id=\"react_root\"]/div/main/div[2]/div/div[1]/div/div/div[2]/div/div[1]/div/div/section[1]/a/h3")).getText());
+
+		//}
+	}
+
+}
+
