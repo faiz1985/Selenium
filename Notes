@@ -870,3 +870,63 @@ XML for Parallel Test Execution
 </classes>
 </test>
 </suite>
+
+Eg:
+XML File:
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="methods" thread-count='3'>
+  <test name="Test">
+    <classes>
+      <class name="parallelTestExecution.Class1"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+Corresponding Java File:
+package parallelTestExecution;
+import org.testng.annotations.Test;
+public class Class1 {
+  @Test
+  public void testCase1() {
+	  long id = Thread.currentThread().getId();
+	  System.out.println("TC1 Thread ID is: "+id);
+  }
+  
+  @Test
+  public void testCase2() {
+	  long id = Thread.currentThread().getId();
+	  System.out.println("TC2 Thread ID is: "+id);
+  }
+  
+  @Test
+  public void testCase3() {
+	  long id = Thread.currentThread().getId();
+	  System.out.println("TC3 Thread ID is: "+id);
+  }
+  
+  @Test
+  public void testCase4() {
+	  long id = Thread.currentThread().getId();
+	  System.out.println("TC4 Thread ID is: "+id);
+  }
+}
+
+
+Maven is a build automation tool used for creating and maintaining environment configuration.
+
+Maven Steps:
+1. Create Maven Project (built in eclipse IDE)
+2. Add all software dependencies to Maven POM XML so that Maven can download the s/w & add to project
+3. Download and use the POM XML file
+
+Advantages of Maven Integration:
+1. All required dependencies like WebDriver, TestNG etc can be added to the POM XML. Re use the XML to have those JARs added each time the XML is used.
+2. XML can be updated on any machine and reused on other machines to retain configuration.
+
+Steps to create Maven Project:
+>Project
+>Type Maven & select Maven Project
+>Enter-Next-Next-Enter Group ID-Enter Artifact ID-Finish
+
+WebDriver Dependency code can be found in below link:
+https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
