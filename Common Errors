@@ -1,0 +1,4 @@
+1. (Could be a similar error as below with different values also)
+NoSuchMethodError: org.apache.xmlbeans.XmlOptions.setLoadEntityBytesLimit(I)Lorg/apache/xmlbeans/XmlOptions
+Solution 1 - Search on net and download latest XML Beans JAR
+Solution 2 - If multiple XML Beans JARs are added in Build Path, remove one. Conflicting JARs can cause the problem
