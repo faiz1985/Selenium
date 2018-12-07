@@ -1,0 +1,51 @@
+Page Object Model (POM) - 
+Page Object Model is a design pattern to create Object Repository for web UI elements.
+It is basically an object design pattern to create repository for web elements. 
+Maintain elements in a centralized location like a repository. 
+Access elements directly from this repository. 
+Under this model, Container classes for web elements are created that behave as object repository.
+Under this model, for each web page in the application, there should be corresponding page class.
+POM can be created in 2 ways - without page factory and with page factory
+Allows reusability of elements, hence reduces code size thereby increasing performance and efficiency or the program
+
+
+To create POM:
+By <variableName> = By.elementLocator(<Value>);
+
+Eg. - 
+<In first class we define the elements and their actions>:
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class pageObjectModel {
+		//Syntax:
+		//By <variableName> = By.elementLocator(<Value>);
+	    WebDriver abcd;
+ 
+		By username = By.name("username");
+		By password = By.name("password");
+		By loginButton = By.id("tdb1");
+
+		public pageObjectModel(WebDriver abcd) { //Name of this constructor MUST be same as name of the class
+			this.abcd = abcd;
+		}
+		//Create User Actions
+		public void typeUsername(String Uname) {
+			abcd.findElement(username).sendKeys(Uname);
+		}
+		public void captureUsername(){
+			abcd.findElement(username).getAttribute("value"); 
+		}
+
+		public void clearUsername() {
+			abcd.findElement(username).clear();
+		}
+
+		public void typePassword(String pwd) {
+			abcd.findElement(password).sendKeys(pwd);
+		}
+
+		public void clickButton() {
+			abcd.findElement(loginButton).click();
+		}
+}
