@@ -960,7 +960,16 @@ Agent: – It is directive to tell Jenkins to execute the pipeline in particular
 
 
 To start Jenkins - type in command prompt : java -jar jenkins.war
-
+Once the service is up and running, acess Jenkins via the URL http://localhost:8080
+Manage Jenkins -> Configure System -> (Optional, not seeing this in latest build) Set the Java Home Path and email parameters
+Under Build, use one the the four options to run Jenkins:
+1. Windows Batch Command
+2. Execute Shell
+3. Invoke Ant
+4. Invoke Maven
+Create TestNG XML in the same folder where we have the lib and bin folders
+In Notepad create a new file, save it as run.bat with contents as java -cp bin;libs/* org.testng.TestNG.xml
+https://huddle.eurostarsoftwaretesting.com/integration-of-jenkins-with-selenium-webdriver/
 
 how to automate the batch run of selenium scripts using Jenkins or any other tool.
 how to validate database migration using selenium - 
