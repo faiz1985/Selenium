@@ -4,3 +4,8 @@ org.apache.poi.ooxml.POIXMLException
 
 Solution 1 - Search on net and download latest XML Beans JAR (or the JAR that is mentioned in the detailed error message)
 Solution 2 - If multiple XML Beans JARs are added in Build Path, remove one. Conflicting JARs can cause the problem
+
+2. While trying to run TestNG suite:
+Exception in thread "main" java.lang.NoClassDefFoundError: org/testng/TestNGException
+
+Solution - even though the TestNG suite is downloaded, downoad the TestNG latest JAR and add to build path and run again
