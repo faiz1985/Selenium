@@ -413,14 +413,14 @@ TestNG is a testing framework designed to simplify broad range of testing needs 
 
 Advantages of TestNG:
 1. TestNG Annotations are easy to create test cases.
-2. Test Cases can be grouped and prioritzed more easily and effectively.
+2. Test Cases can be grouped and prioritized more easily and effectively.
 3. Executing multiple programs or classes using XML file.
 4. Parallel Testing is supported.
 5. Generates test reports that are not present by default in Selenium.
 
 main method is not used in TestNG programs
 TestNG programs contain methods only that are made up of annotations
-if we dont write @TestAnnotation then the test case wont be executed
+if we dont write @Test annotation, then the test case wont be executed
 TestNG verification methods can be used instead of if statements - Assert statements
 TestNG will execute functions within a class in alphabetical order. To change this, use the 'priority' attribute.
 
@@ -536,7 +536,7 @@ public class TestNG3 {
 }
 
 
-Choose he right attribute:
+Choose the right attribute:
 1. If there is no functionality dependency between cases or methods -> priority attribute
 2. If there is functionality dependency between cases or methods -> dependsOnMethods attribute
 3. If there is functionality dependency between some cases only -> alwaysRun attribute
@@ -930,3 +930,132 @@ Steps to create Maven Project:
 
 WebDriver Dependency code can be found in below link:
 https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+
+
+Interview Stuff:
+-------------------
+Jenkins
+----------
+Jenkins is CI (Continuous Integration) tool. Jenkin's chief usage is to monitor any job like checkouts, cron or any application states. 
+It fires pre-configured actions when a particular step occurs in jobs.
+Continuous integration is a process in which all development work is integrated as early as possible. 
+The resulting artifacts are automatically created and tested. This process allows to identify errors as early as possible.
+Change Support: Jenkins generates the list of all changes done in repositories like SVN.
+Permanent links: Jenkins provides direct links to the latest build or failed build that can be used for easy communication
+Running Selenium tests in Jenkins allows you to run your tests every time your software changes and deploy the software to a new environment when the tests pass.
+Jenkins can schedule your tests to run at specific time and / or when a specific action / state is triggered.
+
+Steps of Jenkins Monitoring:
+A software developer commits code to the SCR (Source Code Repository). Now, Jenkins server will check the repository on regular intervals for changes.
+As soon as changes are committed, they are analysed by the server and Jenkins will pull those changes and start making new build instantly.
+In case, the build is not successful then the concerned team will be notified. At the same time, if the build is successful then the build will be deployed to the test server.
+Once the testing is complete, Jenkins will send the feedback and developers are notified for the new build or test results.
+This is not a one-time process but Jenkins server keeps on monitoring the repository regularly and the same process will be repeated as discussed above.
+
+A Jenkins Pipeline is a set of plugins that support continuous integration and implementation in the Jenkins. It gives us the view of stages or tasks to perform one after the other in pipeline form
+The Jenkins pipeline details are stored in a file that is named as the Jenkins file and it is further connected to the source code repository in general.
+Agent: – It is directive to tell Jenkins to execute the pipeline in particular manner and order.
+
+
+
+
+To start Jenkins - type in command prompt : java -jar jenkins.war
+
+
+how to automate the batch run of selenium scripts using Jenkins or any other tool.
+how to validate database migration using selenium - 
+JDBC concepts in java and connections using selenium
+
+Q) Core Java concepts method over riding over loading encapsulation and OOPS
+Method overloading in Java is a programming concept when programmer declares two methods of the same name but with different method signature.
+overloading means multiple methods with the same name but with a different signature. If multiple methods with same signature but different return type then it is not overloading
+Overloaded methods are fast because they are bonded during compile time and no check or binding is required during runtime
+class overloadExample{
+	static int add(int a, int b) {return a+b;}
+	static int add(int a, int b, int c) {return a+b+c;}
+}
+
+If subclass (child class) has the same method as declared in the parent class, it is known as method overriding in Java
+The subclass provides the specific implementation of the method that has been declared by one of its parent class
+Method overriding is used to provide the specific implementation of the method that is already provided by its super class.
+class Animal{
+	void eat() { System.out.prinln("Eating"); }
+}
+class Dog extends Animal{
+	void eat() { System.out.println("Dog is eating"); }
+}
+4 fundamental concepts of OOPS - Abstraction, Encapsulation, Inheritance and Polymorphism(Method overloading and Method Overriding)
+
+Encapsulation:
+Refers to the bundling of data with the methods that operate on that data.
+Encapsulation is used to hide the values or state of a structured data object inside a class, preventing unauthorized parties' direct access to them
+
+Abstraction refers to concealing the implementation details from the user and allowing him to see only the functionality (input vs output)
+An abstract class can only be inherited, it cannot be instantiated individually.
+
+Inheritance can be defined as the process in which one class acquires properties or methods of another class.
+
+Q) Cucumber
+Selenium cucumber is a behviour driven development approach to write automation scripts. It can be applied to both desktop and mobile apps.
+It uses a feature file which describes the test cases in plain text format. Contents of feature file - Feature, User Scenario, Outline, Given clause, When clause, then clause.
+Important keywords - Given, When, Then
+Given - Pre Condition
+When - Actions
+Then - Result or outcome
+2 files needed to run cucumber - feature file and step definition file
+cucumber tags are used to filter the scenarios. We can tag the scenarios and we can execute the scenarios based on tags
+Scenario outline is used to execute the same scenario with different test data
+
+Q) TestNG concepts and framework, reporting
+TestNG is a framework which enables us to group test cases, prioritize cases, execute batches, generate reports.
+Advantages of TestNG:
+1. TestNG Annotations are easy to create test cases.
+2. Test Cases can be grouped and prioritized more easily and effectively.
+3. Executing multiple programs or classes using XML file.
+4. Parallel Testing is supported.
+5. Generates test reports that are not present by default in Selenium.
+main method is not used in TestNG programs
+TestNG programs contain methods only that are made up of annotations
+if we dont write @Test annotation, then the test case (function/method) wont be executed
+TestNG verification methods can be used instead of if statements - Assert statements
+TestNG will execute functions within a class in alphabetical order. To change this, use the 'priority' attribute.
+Priority attribute cannot be used if there is functionality dependency among cases or methods.
+Using DependsOnMethods attribute is another way to prioritize test cases which overcomes the above shortcoming of priority attribute.
+If any function fails, all other functions which depend directly or indirectly on it will be skipped.
+If we want any function to run irrespective of priority or dependency use the "alwaysRun=True" 
+Choose the right attribute:
+1. If there is no functionality dependency between cases or methods -> priority attribute
+2. If there is functionality dependency between cases or methods -> dependsOnMethods attribute
+3. If there is functionality dependency between some cases only -> alwaysRun attributeattribute.
+@BeforeMethod() attribute will run the method before each method defined. It will not be counted as a separate test case or method, and is like a pre condition
+Similarly @AfterMethod()
+TestNG XML File for executing multiple programs
+<suite name = "suite">
+<test name = "test">
+<classes>
+<class name = "packagename.classname">
+</classes>
+The above XML can be modified to do parallel run of test methods, and also by providing optional parameter for # of threads on which to run the parallel tests
+<suite name="suitename" parallel="methods" thread-count='3'>
+</test>
+</suite>
+Use the exclude tag if you want any test to be excluded - <exclude name="testName"/>. Similarly use the include tag as well. Wild cards can be used in the tag names.
+
+Q) how to locate web table, how to read / fetch a particular value from the web table, how to deal with dynamic tables
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("file:\\C:\\Users\\faiz1\\Desktop\\Selenium\\Table Demo.html");
+		
+		WebElement table = driver.findElement(By.xpath("/html/body/table/tbody"));
+
+		List < WebElement > rows = table.findElements(By.tagName("tr"));
+		for(int i=0;i<rows.size();i++){
+			List<WebElement> columns=rows.get(i).findElements(By.tagName("td"));
+			System.out.println("Number of columns on row# " +i+ ": "+columns.size());
+			for(int j=0;j<columns.size();j++){
+				System.out.println("Element at row# "+ (i+1) +", column# "+ (j+1) + " is: " +columns.get(j).getText());
+			}
+		} 
+
+		
+	    driver.close();
