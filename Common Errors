@@ -11,6 +11,10 @@ Exception in thread "main" java.lang.NoClassDefFoundError: org/testng/TestNGExce
 Solution - even though the TestNG suite is downloaded, downoad the TestNG latest JAR and add to build path and run again
 
 3. While trying to run TestNG suite:
-[RemoteTestNG] detected TestNG version 6.14.3 -> if after this line you get erro "cannot find class in classpath":
+[RemoteTestNG] detected TestNG version 6.14.3 -> if after this line you get error "cannot find class in classpath":
 Solution - right click on project -> Build Path -> Add Libraries -> Select TestNG
 If required move the source code file under newly created TestNG->Src folder and update package name and re run
+
+4. While invoking TestNG XML:
+Cannot find class in classpath
+Solution - make sure the class tag has the value packagename.classname
