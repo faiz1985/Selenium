@@ -946,7 +946,7 @@ Running Selenium tests in Jenkins allows you to run your tests every time your s
 Jenkins can schedule your tests to run at specific time and / or when a specific action / state is triggered.
 
 Steps of Jenkins Monitoring:
-A software developer commits code to the SCR (Source Code Repository). Now, Jenkins server will check the repository on regular intervals for changes.
+A software developer commits code to the SCR (Source Code Repository). Jenkins server will check the repository on regular intervals for changes.
 As soon as changes are committed, they are analysed by the server and Jenkins will pull those changes and start making new build instantly.
 In case, the build is not successful then the concerned team will be notified. At the same time, if the build is successful then the build will be deployed to the test server.
 Once the testing is complete, Jenkins will send the feedback and developers are notified for the new build or test results.
@@ -954,10 +954,27 @@ This is not a one-time process but Jenkins server keeps on monitoring the reposi
 
 A Jenkins Pipeline is a set of plugins that support continuous integration and implementation in the Jenkins. It gives us the view of stages or tasks to perform one after the other in pipeline form
 The Jenkins pipeline details are stored in a file that is named as the Jenkins file and it is further connected to the source code repository in general.
+
+sample Jenkins Pipeline Code for Java:
+Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent { docker 'maven:3.3.3' }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+    }
+}
+
+Common directives:
 Agent: – It is directive to tell Jenkins to execute the pipeline in particular manner and order.
-
-
-
+The agent directive tells Jenkins where and how to execute the Pipeline, or subset thereof.
+Post: - post section defines one or more additional steps that are run upon the completion of a Pipeline’s or stage’s run
+Stage:- the stages section is where the bulk of the "work" described by a Pipeline will be located. 
+Environment:- environment directive specifies a sequence of key-value pairs which will be defined as environment variables for the all steps, or particular steps of the pipeline.
+Input:- input directive on a stage allows you to prompt for input, using the input step. The stage will pause after any options have been applied, and before entering the stage`s `agent or evaluating its when condition. If the input is approved, the stage will then continue. 
 
 To start Jenkins - type in command prompt : java -jar jenkins.war
 Once the service is up and running, acess Jenkins via the URL http://localhost:8080
