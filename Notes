@@ -936,6 +936,9 @@ Interview Stuff:
 -------------------
 Jenkins
 ----------
+Jenkins is an open source tool with plugins built for continuous integration purpose.  
+The principle functionality of Jenkins is to keep a track of version control system and to initiate and monitor a build system if changes occur. 
+It monitors the whole process and provides reports and notifications to alert.
 Jenkins is CI (Continuous Integration) tool. Jenkin's chief usage is to monitor any job like checkouts, cron or any application states. 
 It fires pre-configured actions when a particular step occurs in jobs.
 Continuous integration is a process in which all development work is integrated as early as possible. 
@@ -944,6 +947,15 @@ Change Support: Jenkins generates the list of all changes done in repositories l
 Permanent links: Jenkins provides direct links to the latest build or failed build that can be used for easy communication
 Running Selenium tests in Jenkins allows you to run your tests every time your software changes and deploy the software to a new environment when the tests pass.
 Jenkins can schedule your tests to run at specific time and / or when a specific action / state is triggered.
+Jenkins is integrated with 2 components -> Build tool like ant ,maven etc. & Version control system like SVN, GIT
+
+Advantage of Jenkins include:
+At integration stage, build failures are cached
+For each code commit changes an automatic build report notification generates
+To notify developers about build report success or failure, it is integrated with LDAP mail server
+Achieves continuous integration agile development and test driven development
+With simple steps, maven release project is automated
+Easy tracking of bugs at early stage in development environment than production
 
 Steps of Jenkins Monitoring:
 A software developer commits code to the SCR (Source Code Repository). Jenkins server will check the repository on regular intervals for changes.
