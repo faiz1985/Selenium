@@ -1,0 +1,10 @@
+12/21/2018
+Client ETS, Employer UBS
+1. Explain how selenium framework implemented in current project.
+2. Elaborate on Jenkins implementation in the current project.
+3. Significance of POM.XML file in Jenkins implementation.
+4. Scheduler Types in Jenkins - Windows bat file and invoke Maven.
+5. How dependencies are defined in Jenkins - POM.XML
+6. How is data (not test data, config data) fed into the scripts - config.properties, excel etc.
+7. Why is Maven integration required for Jenkins - with help of Maven, the build process can trigger the defined TestNG file and invoke tests.
+8. What repository are you using, and how is it configured in Jenkins - under configurations section of Jenkins, Enter the GIT URL and credentials.

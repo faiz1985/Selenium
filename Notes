@@ -1,0 +1,1099 @@
+https://github.com/faiz1985/Selenium.git
+
+Selenium Components
+1. Selenium IDE - Command Based Scripting, playback recording.
+2. Selenium RC - Remote Control, phased out since it was client server based and hence slow
+3. Selenium WebDriver - used for Creating and executing the scripts; controls browser from OS level as opposed to remote control. Supports only sequential execution of scripts
+4. Selenium Grid - used for executing scripts only, not for design. Supports parallel execution of scripts
+
+Selenium webDriver
+Create and execute scripts
+Sequential execution of scripts only
+No IDE, only programming interface
+No Tool features like UFT, only scripting features
+No Tool features like UFT, only scripting features
+Scripts are created using element locators, webDriver API commands
+
+General Test Step in Functional Test Scripting:
+Identify the element (object) using Element Locator and perform the action using webDriver
+
+Selenium Test Process:
+1. Planning
+	Get Environment details from Dev Team
+	Analyse the AUT for Element identification. For Mozilla use the built in feature 'Page Inspector' or external plug in like firebug and firepath For Chrome, use the built in developer tools (F12)
+	Select Test Cases suitable for automation
+	Select Selenium tools and setup Selenium Environment (one time setup)
+2. Generate Basic Test Cases
+	Creating basic flow/navigation
+3. Enhance Test Cases
+	Insert verification points, parameterization, error handling etc.
+4. Run & Debug the cases
+5. Analyse Test Results and report defects if any
+
+Versions of Selenium:
+Selenium 1.0
+(Selenium IDE + Selenium RC + Selenium Grid)
+
+Selenium 2.0 = Selenium 1.0 + Selenium WebDriver
+
+Selenium 3.0 = Selenium 2.0 - Selenium RC
+
+Limitations of WebDriver:
+1. Supports Browser or web based applications only
+2. No technical support in case of issues
+3. No Test Management Tool integration
+4. No built in object repository
+5. No built in result reporting facility
+6. Limited support for Image testing
+7. No IDE, only programming interface
+
+Sample code includes locating the element and performing action on it:
+driverObject.findElement(By.linkText("Gmail")).click();
+driverObject.findElement(By.name("username")).sendKeys("a@gmail.com");
+
+Environment Setup essentials:
+Eclipse IDE for writing scripts
+Java for programming
+WebDriver for writing test steps
+TestNG testing framework as test runner
+
+Selenium Environment setup steps:
+1. Download and Install Java Software (JDK) - to create and execute programs/scripts
+2. Set Environment Variable (Path variable) - to use Java s/w from any directory
+3. Download and extract eclipse IDE - to write and execute Java Code
+4. Download Selenium WebDriver Java language binding from selenium official website seleniumhq.org and add WebDriver jar files to Java Project in Eclipse IDE
+5. Download Browser drivers
+
+Adding Selenium WebDriver jar files to java project:
+1. Launch Eclipse IDE
+2. Create Java project/select Java project and right click 
+3. Build path
+4. Configure build path
+5. Select "Libraries" tab
+6. Add external JARs
+7. Browse path of the external JAR files and add
+8. Add
+9. Ok
+
+Sample Program:
+
+public static void main(String[] args) throws InterruptedException {
+	//Instantiate the Chrome Browser Driver using pre defined class
+	System.setProperty("webdriver.ie.driver", "C:\\Users\\faiz1\\Desktop\\Selenium\\MicrosoftWebDriver.exe");
+	//Create Chrome Browser Driver
+	WebDriver driver = new InternetExplorerDriver();
+	//Navigate to gcrshop admin interface	
+	driver.get("http://www.gcrit.com/build3/admin/");
+	driver.findElement(By.name("username")).sendKeys("admin");
+	driver.findElement(By.name("password")).sendKeys("admin@123");
+	driver.findElement(By.id("tdb1")).click();
+	
+	Thread.sleep(2000);
+	String url = driver.getCurrentUrl();
+	if(url.contains("http://www.gcrit.com/build3/admin/index")) {
+		System.out.println("Login Successful");
+	}
+	else {
+		System.out.println("Login Failed");
+	}
+	driver.close();
+}
+
+Element Locator - identifies web element uniquely in a web page.
+
+Handling Elements in Selenium:
+1. Web Elements
+2. Element Locators
+3. Web Driver API Commands
+4. Java Programming Features
+
+Selenium supports 8 element locators:
+id
+name
+className
+tagName
+linkText
+partialLinkText
+cssSelector
+xpath
+
+Ways to inspect elements:
+Firefox - Page Inspector (built in feature)
+
+Element Locator General Syntax:
+
+1. driverObject.WebDriverCommand(By.ElementLocator("Value")).WebDriverCommand(optional Parameter);
+Eg. - WebDriver driver = new InternetExplorerDriver();
+driver.findElemenet(By.name("name of element")).sendKeys("value to be entered")
+
+2. General Syntax for Element Locator if we want to store in a variable and perform multiple operations on the same object:
+WebElement element = driverObject.WebDriverCommand(By.ElementLocator("value"));
+element.WebDriverCommand();
+
+Eg. - 
+WebDriver driver = new InternetExplorerDriver();
+Webelement element = driver.findElement(By.name("Element Name"));
+element.sendKeys("Faisel Farooq");
+
+3. Using Class Name:
+driverObject.WebDriverCommand(By.ElementLocator(("value")).WebDriverCommand(Parameter);
+
+Eg. - driver.findElement(By.className("<Name of class>").click();
+
+4. Using Tag Name:
+driverObject.WebDriverCommand(By.tagName("<name of tag, get when you inspect the element">).sendKeys("abs");
+
+Eg. - WebDriver driver = new InternetExplorerDriver();
+driver.findElement(By.tagName("input")).sendKeys("abs");
+Using tag name is not preferable since multiple elements may have the same tag name, and selenium will identify only the first element having the tag name and perform operations on it.
+'
+5. Link Text
+This is only for link texts and not required to inspect the link, we can use the visible text itself.
+driverObject.WebDriverCommand(By.ElementLocator("value")).WebDriverCommand(<Parameter>);
+WebDriver driver = new InernetExplorerDriver();
+driver.findElement(By.linkText("Online Catalog")).click();
+
+6. Partial Link Text - can be used when there are symbols other than english in the link, can also be used with sub text of the link in normal english text
+driver.findElement(By.partialLinkText("Gma")).click();
+
+Similarly, partialLinkText, cssSelector and xpath
+
+xpath is used to find the location of elements on the web page using HTML DOM structure. It is slower in execution, so should be the last preference.
+
+Categories of Selenium webDriver Commands:
+1. Browser Regular Commands
+2. Browser Navigation Commands
+3. Regular commands on web elements
+4. Verification commands
+5. Others
+
+1. Browser Regular Commands
+	get() - opens a specified URL in the browser window
+	Syntax - driver.get("www.google.com")
+	
+	getTitle - returns the current briwser title (may sometimes be the same as page title)
+	Syntax - String browserTitle = driver.getTitle();
+	
+	getCurrentUrl - returns the current URL of the page
+	Syntax - String currentURL = driver.getCurrentUrl();
+	
+	close() - to close the focused browser. If multiple browser instances are open, only the one opened by selenium is closed.
+2. Browser Navigation Commands
+	navigate - loads a new page in the browser window
+	Syntax - driverObject.navigate().to("URL")
+	
+	navigate().back() - stimulates action of the back button on the browser window
+	Syntax - driverObject.navigate().back();
+	
+	navigate.forward()
+	Syntax - driverObject.navigate().forward();
+	
+	navigate().refresh() - Refreshes the current browser window
+	Syntax - driver.navigate().refresh()
+3. Regular commands on web elements
+	findElement() - find first element within the current page using the given locator
+	
+	sendKeys() - to enter data / send values to applicable element
+	driverObject.findElement(By.elementLocator("value")).sendKeys("Value of the input");
+	
+	clear() - to remove contents from text box
+	driverObject.findElement(By.elementLocator("value")).clear();
+	
+	click() - to perform click operation on the button, radio button, check box, link etc.
+	driverObject.findElement(By.elementLocator("value")).click();
+	
+	getText()
+	
+	getAttribute()
+4. Verification commands - All return boolean values
+	isDisplayed() - checks if the web element is displayed or not. Applicable for all element types.
+	boolean displayStatus = driverObject.findElement(By.ElementLocator("value")).isDisplayed()
+	System.out.println(displayStatus)
+	
+	isEnabled() - checks whether the element is displayed or not. Applicable for all element types.
+	boolean enableStatus = driver.findElement(By.elementLocator("value")).isEnabled();
+	System.out.println(enableStatus);
+	
+	isSelected() - checks whether element is selected or not. Applicable only on radio button, check box
+	boolean selectValue = driver.findElement(By.ElementLocator("value")).isSelected();
+5. Others
+	manage().window().maximize();
+	sleep();
+
+
+
+Pre Requisites to create test scripts in Selenium WebDriver:
+1. Element Locators - to identify elements
+2. WebDriver Commands - to perform actions on the identified elements
+3. Programming language - to write or enhance test scripts
+4. Testing Framework (JUnit or TestNG) - to group test cases, prioritize cases, execute batches, generate reports
+
+Operations on Edit Box
+> Check Displayed Status
+> Check Enabled Status
+> Enter some Value
+> Return the Value
+> Clear the Value
+
+driverObject.findElement(By.ElementLocator("Value")).getText() -> for System defined texts in the screen
+driverObject.findElement(By.ElementLocator("Value")).getAttribute() -> for user defined texts in the screen
+
+Handling pop ups - 
+Alert popUp = driver.switchTo().alert()
+String errMsg = popUp.getText(); //to get the pop up message displayed
+System.out.println(errMsg);
+popUp.accept(); //to click Ok on the pop up
+
+Handling the Button - 
+> Check the Displayed Status
+> Check the Enabled Status
+> Click (Submit)
+
+Handling Check Box - 
+> Check the Displayed Status
+> Check the Enabled Status
+> Check the Selected Status
+> Select (Click)
+> Check the Selected Status
+
+Handling Link - 
+> Check the Displayed status
+> Check the Enabled status
+> Click
+
+Handling Radio Button - 
+> Check the displayed status
+> Check the enabled status
+> Check the select status (Check whether radio button in select status or unselect status) 
+> Select (Click)
+
+Handling Drop Down Box - 
+> Check Displayed Status
+> Check Enabled Status
+> Select an Item
+> Return Items Count
+
+//Select Pre Defined Class
+Select dropdown=new Select (driver.findElement(By.name("country")));
+
+//Select Required Text in the Dropdown
+dropdown.selectByIndex(6);
+
+//select by value in dropdown
+dropdown.selectByVisibleText("India");
+
+//List Type WebElement
+List <WebElement> e = dropdown.getOptions();
+System.out.println(e.size()); //Size means count, no of items in the dropdown
+
+Handling Web Tables / HTML Table
+> Check the Displayed Status
+> Return Cell Value
+> Return Row Count
+> Return Cells Count
+> Return Columns Count
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\faiz1\\Desktop\\Selenium\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+
+		driver.get("file:///C:\\Users\\faiz1\\Desktop\\Selenium\\abcd.html");
+
+		WebElement StudentsTable=driver.findElement(By.id("students"));
+
+		//Introducing "find.elements"
+		List <WebElement> rows = StudentsTable.findElements(By.tagName("tr"));
+		int rowsCount = rows.size();
+		System.out.println(rowsCount);//3
+
+		List <WebElement> cells = StudentsTable.findElements(By.tagName("td"));
+		int cellsCount = cells.size();
+		System.out.println(cellsCount);//9
+
+		int columsCount = cellsCount/rowsCount;
+		System.out.println(columsCount);//3
+		
+Handling Frames:
+//To work on a frame, first switch to the required frame. Frames are numbered top left to bottom right
+//We can switch using frame index or frame name
+
+//Using Frame Index:
+driver.switchTo().frame(int index);
+
+//using Frame Name:
+driver.switchTo().frame(String frameName);
+
+//Switch to top window from any frame:
+driver.SwitchTo().defaultContent();
+
+To read user input manually between script:
+Scanner scan = new Scanner (System.in);
+String inputData = scan.nextLine();
+
+FileReader file = new FileReader(<PathOfFile>);
+BufferedReader br = new BufferedReader(file);
+
+String line;
+
+while ((line=br.readLine())!=null) {Perform operations}
+
+Page Object Model (POM) - 
+It is basically an object design pattern to create repository for web elements. 
+Maintain elements in a centralized location like a repository. 
+Access elements directly from this repository. 
+Under this model, Container classes for web elements are created that behave as object repository.
+POM can be created in 2 ways - without page factory and with page factory
+Allows reusability of elements, hence reduces code size thereby increasing performance and efficiency or the program
+
+
+To create POM:
+By <variableName> = By.elementLocator(<Value>);
+Eg. - 
+<In first class we define the elements and their actions>:
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class pageObjectModel {
+		//Syntax:
+		//By <variableName> = By.elementLocator(<Value>);
+	    WebDriver abcd;
+ 
+		By username = By.name("username");
+		By password = By.name("password");
+		By loginButton = By.id("tdb1");
+
+		public pageObjectModel(WebDriver abcd) { //Name of this constructor MUST be same as name of the class
+			this.abcd = abcd;
+		}
+		//Create User Actions
+		public void typeUsername(String Uname) {
+			abcd.findElement(username).sendKeys(Uname);
+		}
+		public void captureUsername(){
+			abcd.findElement(username).getAttribute("value"); 
+		}
+
+		public void clearUsername() {
+			abcd.findElement(username).clear();
+		}
+
+		public void typePassword(String pwd) {
+			abcd.findElement(password).sendKeys(pwd);
+		}
+
+		public void clickButton() {
+			abcd.findElement(loginButton).click();
+		}
+}
+
+In second class we define the page operations:
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class pageObjectModel2 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\faiz1\\Desktop\\Selenium\\ChromeDriver.exe");
+		WebDriver driver = new ChromeDriver();	
+		pageObjectModel POM = new pageObjectModel(driver);
+		
+		driver.get("http://www.gcrit.com/build3/admin/");
+		POM.typeUsername("admin");
+		POM.typePassword("admin@123");
+		POM.clickButton();
+		driver.close();
+	}
+}
+
+2 Frameworks in Selenum using Java -
+1. JUnit
+2. TestNG (NG - Next Generation)
+
+TestNG is a testing framework designed to simplify broad range of testing needs from Unit to System testing. Initially developed for unit testing, now used for all levels of testing.
+
+Advantages of TestNG:
+1. TestNG Annotations are easy to create test cases.
+2. Test Cases can be grouped and prioritized more easily and effectively.
+3. Executing multiple programs or classes using XML file.
+4. Parallel Testing is supported.
+5. Generates test reports that are not present by default in Selenium.
+
+main method is not used in TestNG programs
+TestNG programs contain methods only that are made up of annotations
+if we dont write @Test annotation, then the test case wont be executed
+TestNG verification methods can be used instead of if statements - Assert statements
+TestNG will execute functions within a class in alphabetical order. To change this, use the 'priority' attribute.
+
+Syntax & Example:
+Method Syntax - 
+public void <Name>(){
+//User defined functions
+}
+
+public class <className> {
+@Test
+public void verifyTitle(){
+	System.setProperty("webdriver.chrome.driver", "<Path of driver exe file>");
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://www.google.com");
+	String pageTitle = driver.getTitle();
+	
+	Assert.assertEquals(pageTitle, "Google");
+	driver.close();
+}
+}
+
+Once this is run, results can be seen on console. Another way to view results is by refreshing the class folder on the left side, a new folder test-results will be generated; click on index.html
+
+Using Priority - in below code if Priority is not used then close browser fails since it will try to execute first (alphabetical order), and it will not find the bowser open.
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class TestNG2 {
+	static WebDriver driver;
+	@Test (priority=1)
+	public void launchBrowser() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\faiz1\\Desktop\\Selenium\\ChromeDriver.exe");
+		driver = new ChromeDriver();
+	}
+	@Test (priority=2)
+	public void verifyTitle() {
+		driver.get("https://www.google.com");
+		String pageTitle = driver.getTitle();
+		
+		Assert.assertEquals(pageTitle, "Google");
+	}
+	@Test (priority=3)
+	public void closeBrowser() {
+		driver.close();
+	}
+}
+
+Priority attribute cannot be used if there is functionality dependency among cases or methods.
+Using DependsOnMethods attribute is another way to prioritize test cases which overcomes the above shortcoming of priority attribute.
+If any function fails, all other functions which depend directly or indirectly on it will be skipped.
+
+public class TestNG3 {
+	static WebDriver driver;
+	@Test
+	public void launchBrowser() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\faiz1\\Desktop\\Selenium\\ChromeDriver.exe");
+		driver = new ChromeDriver();
+	}
+	@Test (dependsOnMethods = "launchBrowser")
+	public void verifyGoogleTitle() {
+		driver.get("https://www.google.com");
+		String pageTitle = driver.getTitle();
+		Assert.assertEquals(pageTitle, "Google");
+	}
+	@Test (dependsOnMethods = "verifyGoogleTitle")
+	public void navigateToYahooURL() {
+		driver.navigate().to("https://www.yahoo.com");
+	}
+	@Test (dependsOnMethods = "navigateToYahooURL")
+	public void verifyYahooTitle() {
+		String pageTitle = driver.getTitle();
+		Assert.assertEquals(pageTitle, "Yahoo");
+	}
+	@Test (priority=5)
+	public void closeBrowser() {
+		driver.close();
+	}
+}
+
+If any function fails, all other functions which depend directly or indirectly on it will be skipped.
+If we want any function to run irrespective of priority or dependency use the "alwaysRun=True" attribute.
+
+public class TestNG3 {
+	static WebDriver driver;
+	@Test
+	public void launchBrowser() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\faiz1\\Desktop\\Selenium\\ChromeDriver.exe");
+		driver = new ChromeDriver();
+	}
+	@Test (dependsOnMethods = "launchBrowser")
+	public void verifyGoogleTitle() {
+		driver.get("https://www.google.com");
+		String pageTitle = driver.getTitle();
+		Assert.assertEquals(pageTitle, "G");
+	}
+	@Test (dependsOnMethods = "verifyGoogleTitle")
+	public void navigateToYahooURL() {
+		driver.navigate().to("https://www.yahoo.com");
+	}
+	@Test (dependsOnMethods = "navigateToYahooURL", alwaysRun = true)
+	public void verifyYahooTitle() {
+		String pageTitle = driver.getTitle();
+		Assert.assertEquals(pageTitle, "Yahoo");
+	}
+	@Test (priority=5)
+	public void closeBrowser() {
+		driver.close();
+	}
+}
+
+
+Choose the right attribute:
+1. If there is no functionality dependency between cases or methods -> priority attribute
+2. If there is functionality dependency between cases or methods -> dependsOnMethods attribute
+3. If there is functionality dependency between some cases only -> alwaysRun attribute
+
+@BeforeMethod() attribute will run the method before each method defined. It will not be counted as a separate test case or method, and is like a pre condition to each test case or method. Eg. - launching a browser before navigating to URL.
+Similarly @AfterMethod()
+
+@AnnotationsProgram
+public class TestNG3 {
+	static WebDriver driver;
+	@BeforeMethod()
+	public void launchBrowser() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\faiz1\\Desktop\\Selenium\\ChromeDriver.exe");
+		driver = new ChromeDriver();
+	}
+	@Test (priority = 1)
+	public void navigateToYahooURL() {
+		driver.navigate().to("https://www.yahoo.com");
+	}
+	@Test (priority = 2)
+	public void navigateToGoogleURL() {
+		driver.navigate().to("https://www.google.com");
+	}
+	@Test (priority = 3)
+	public void navigateToRobinHoodURL() {
+		driver.navigate().to("https://www.robinhood.com");
+	}
+	@AfterMethod
+	public void closeBrowser() {
+		driver.close();
+	}
+}
+
+Some of the common annotations:
+@Test - denotes a test case
+
+@BeforeMethod - the annotated method will be run before each test case. This is like a common pre condition. Eg - open a browser before each URL navigation.
+@AfterMethod - annotated method will be run after each test case. This is like a common post condition. Eg - close a browser after each URL navigation.
+In @AnnotationsProgram, launchBrowser is executed before each method; closeBrowser is executed after each method.
+This is method level annotation.
+
+@BeforeClass - Annotated method will run as the first test method in the current class
+@AfterClass - Annotated method will run after all the test methods in the current class
+In @AnnotationsProgram (replace method with class in the annotation), launchBrowser is executed just once before any of the method is run; and closeBrowser is run just once after all the methods are executed.
+This is class level annotation.
+
+@BeforeTest - Annotated method will be the first to run before any test method is executed.
+@AfterTest - Annotated method will run after all the test method are executed inside the tag. 
+This is a group level annotation.
+
+
+public class Class1 {
+  @BeforeTest
+  public void login() {
+  System.out.println("Admin Login is Successful"); 
+  }
+  @AfterTest
+  public void logout() {
+  System.out.println("Logout is Successful"); 
+  }
+
+  @Test (priority=1)
+  public void addVendor() {
+  System.out.println("Add Vendor is Successful"); 
+  }
+
+  @Test (priority=2)
+  public void addProduct() {
+  System.out.println("Add Product is Successful"); 
+  }
+  @Test (priority=3)
+  public void addCurrency() {
+  System.out.println("Add Currency is Successful"); 
+  }
+}
+Result:
+Admin Login is Successful
+Add Vendor is Successful
+Add Product is Successful
+Add Currency is Successful
+Logout is Successful
+
+
+public class Class2 {
+	@BeforeMethod
+	public void login() {
+	System.out.println("Admin Login is Successful"); 
+	}
+	@AfterMethod
+	public void logout() {
+	System.out.println("Logout is Successful"); 
+	}
+
+	@Test (priority=4)
+	public void deleteVendor() {
+	System.out.println("Delete Vendor is Successful"); 
+	}
+
+	@Test (priority=5)
+	public void deleteProduct() {
+	System.out.println("Delete Product is Successful"); 
+	}
+	@Test (priority=6)
+	public void deleteCurrency() {
+	System.out.println("Delete Currency is Successful"); 
+	}
+}
+Result:
+Admin Login is Successful
+Delete Vendor is Successful
+Logout is Successful
+Admin Login is Successful
+Delete Product is Successful
+Logout is Successful
+Admin Login is Successful
+Delete Currency is Successful
+Logout is Successful
+
+
+public class Class3 {
+	@BeforeClass
+	public void login() {
+	System.out.println("Admin Login is Successful"); 
+	}
+	@AfterClass
+	public void logout() {
+	System.out.println("Logout is Successful"); 
+	}
+
+	@Test (priority=4)
+	public void deleteVendor() {
+	System.out.println("Delete Vendor is Successful"); 
+	}
+
+	@Test (priority=5)
+	public void deleteProduct() {
+	System.out.println("Delete Product is Successful"); 
+	}
+	@Test (priority=6)
+	public void deleteCurrency() {
+	System.out.println("Delete Currency is Successful"); 
+	}
+}
+Result:
+Admin Login is Successful
+Delete Vendor is Successful
+Delete Product is Successful
+Delete Currency is Successful
+Logout is Successful
+
+
+Executing Multiple programs or classes using XML:
+XML File for executing multiple programs:
+<suite name="suiteName">
+	<test name="testName">
+		<classes>
+			<class name="package.class1Name"/>
+			<class name="package.class2Name"/>
+			<class name="package.class3Name"/>
+		</classes>
+	</test>
+</suite>
+
+Tags in this XML file:
+1. Suite
+2. Test
+3. Classes
+4. Class
+
+Navigation to create an XML file in Eclipse for executing multiple programs
+In Eclipse
+> Select Java Package and right click>New>Other
+> Enter "TestNG"
+> Select "TestNG" Class
+> Enter source and package names
+> Enter XML file Name
+> Finish
+
+XML for grouping test cases:
+<suite name="SuiteName">
+	<test name="testName">
+		<groups>
+
+		<run>
+			<include name="GroupName">
+		</run>
+
+		<classes>
+			<class name="package.class1Name"/>
+			<class name="package.class2Name"/>
+			.
+			.
+			</classes>
+		</groups>
+	</test>
+</suite>
+
+Eg - 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Online Shopping" parallel="false">
+  <test name="User">
+  	<groups>
+  		<run>
+  			<include name = "sanity"/>
+  			<include name = "regression"/>
+  		</run>
+	    <classes>
+	      <class name="usingXML.groupTests"/>
+	    </classes>
+    </groups>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+in a java file, class groupTests will have the packages and tests as follows (the java file is generated automatically when the XML file is created using procedure outlines earlier):
+package usingXML;
+
+import org.testng.annotations.Test;
+
+public class groupTests {
+	@Test(groups= {"sanity", "regression"}, priority = 1) //Mention all groups where this test is required
+	public void login() {
+		System.out.println("Login Success");
+	}
+	
+	@Test(groups= {"sanity", "regression"}, priority=6)
+	public void logout() {
+		System.out.println("Logout Success");
+	}
+	
+	@Test(groups= {"sanity"}, priority=2)
+	public void search() {
+		System.out.println("Search Success");
+	}
+	
+	@Test(groups= {"sanity"}, priority=3)
+	public void prepaidRecharge() {
+		System.out.println("Prepaid Recharge Success");
+	}
+	
+	@Test(groups= {"regression"}, priority=4)
+	public void advancedSearch() {
+		System.out.println("Advanced Search Success");
+	}
+	
+	@Test(groups= {"regression"}, priority=5)
+	public void billPayment() {
+		System.out.println("Bill Payment Success");
+	}
+}
+
+@DataProvider Annotation for reading data through Excel and using as a parameter in the method.
+package dataDrivenTest;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+
+public class dataDrivenTest {
+	WebDriver driver;
+	@Test(dataProvider="testdata")
+	public void adminLogin(String uname, String pwd) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\faiz1\\Desktop\\Selenium\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.robinhood.com");
+		driver.findElement(By.linkText("Log In")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.name("username")).sendKeys(uname);
+		driver.findElement(By.name("password")).sendKeys(pwd);
+		driver.findElement(By.className("_1q0oQo76jB7KFKWPCMPzDW")).click();
+		Thread.sleep(3000);
+		Assert.assertEquals(driver.getCurrentUrl(), "https://robinhood.com/");
+		
+	}
+	
+	@AfterClass
+	public void closeApp() {
+		driver.close();
+	}
+	
+	@DataProvider (name="testdata")
+	public Object [][] readExcel() throws BiffException, IOException {
+		// TODO Auto-generated method stub
+		//System.setProperty("webdriver.chrome.driver", "C:\\Users\\faiz1\\Desktop\\Selenium\\ChromeDriver.exe");
+		//WebDriver driver = new ChromeDriver();
+		
+		File file = new File("C:\\Users\\faiz1\\Desktop\\Selenium\\Test Data File.xls");
+		Workbook wb = Workbook.getWorkbook(file);
+		Sheet xlSheet = wb.getSheet("Sheet1"); //can also use sheet index 0, 1, 2 etc
+		
+		int rows = xlSheet.getRows();
+		int columns = xlSheet.getColumns();
+		
+		System.out.println(rows + " " + columns);
+		
+		String inputData [][] = new String [rows][columns];
+		
+		for (int i=0;i<rows; i++) {
+			for(int j=0;j<columns;j++) {
+				jxl.Cell c = xlSheet.getCell(j,i);
+				inputData[i][j] = c.getContents();
+				System.out.println(inputData[i][j]);
+			}
+		}
+		return inputData;
+	}
+
+}
+
+
+
+XML for Parallel Test Execution
+<suite name="suiteName" parallel="methods" thread-count='2'>
+<test name="testName">
+<classes>
+<class name="packageName.className"/>
+.
+.
+</classes>
+</test>
+</suite>
+
+Eg:
+XML File:
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="methods" thread-count='3'>
+  <test name="Test">
+    <classes>
+      <class name="parallelTestExecution.Class1"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+Corresponding Java File:
+package parallelTestExecution;
+import org.testng.annotations.Test;
+public class Class1 {
+  @Test
+  public void testCase1() {
+	  long id = Thread.currentThread().getId();
+	  System.out.println("TC1 Thread ID is: "+id);
+  }
+  
+  @Test
+  public void testCase2() {
+	  long id = Thread.currentThread().getId();
+	  System.out.println("TC2 Thread ID is: "+id);
+  }
+  
+  @Test
+  public void testCase3() {
+	  long id = Thread.currentThread().getId();
+	  System.out.println("TC3 Thread ID is: "+id);
+  }
+  
+  @Test
+  public void testCase4() {
+	  long id = Thread.currentThread().getId();
+	  System.out.println("TC4 Thread ID is: "+id);
+  }
+}
+
+
+Maven is a build automation tool used for creating and maintaining environment configuration.
+
+Maven Steps:
+1. Create Maven Project (built in eclipse IDE)
+2. Add all software dependencies to Maven POM XML so that Maven can download the s/w & add to project
+3. Download and use the POM XML file
+
+Advantages of Maven Integration:
+1. All required dependencies like WebDriver, TestNG etc can be added to the POM XML. Re use the XML to have those JARs added each time the XML is used.
+2. XML can be updated on any machine and reused on other machines to retain configuration.
+
+Steps to create Maven Project:
+>Project
+>Type Maven & select Maven Project
+>Enter-Next-Next-Enter Group ID-Enter Artifact ID-Finish
+
+WebDriver Dependency code can be found in below link:
+https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+
+
+Interview Stuff:
+-------------------
+Jenkins
+----------
+Jenkins is an open source tool with plugins built for continuous integration purpose.  
+The principle functionality of Jenkins is to keep a track of version control system and to initiate and monitor a build system if changes occur. 
+It monitors the whole process and provides reports and notifications to alert.
+Jenkins is CI (Continuous Integration) tool. Jenkin's chief usage is to monitor any job like checkouts, cron or any application states. 
+It fires pre-configured actions when a particular step occurs in jobs.
+Continuous integration is a process in which all development work is integrated as early as possible. 
+The resulting artifacts are automatically created and tested. This process allows to identify errors as early as possible.
+Change Support: Jenkins generates the list of all changes done in repositories like SVN.
+Permanent links: Jenkins provides direct links to the latest build or failed build that can be used for easy communication
+Running Selenium tests in Jenkins allows you to run your tests every time your software changes and deploy the software to a new environment when the tests pass.
+Jenkins can schedule your tests to run at specific time and / or when a specific action / state is triggered.
+Jenkins is integrated with 2 components -> Build tool like ant ,maven etc. & Version control system like SVN, GIT
+
+Advantage of Jenkins include:
+At integration stage, build failures are cached
+For each code commit changes an automatic build report notification generates
+To notify developers about build report success or failure, it is integrated with LDAP mail server
+Achieves continuous integration agile development and test driven development
+With simple steps, maven release project is automated
+Easy tracking of bugs at early stage in development environment than production
+
+Steps of Jenkins Monitoring:
+A software developer commits code to the SCR (Source Code Repository). Jenkins server will check the repository on regular intervals for changes.
+As soon as changes are committed, they are analysed by the server and Jenkins will pull those changes and start making new build instantly.
+In case, the build is not successful then the concerned team will be notified. At the same time, if the build is successful then the build will be deployed to the test server.
+Once the testing is complete, Jenkins will send the feedback and developers are notified for the new build or test results.
+This is not a one-time process but Jenkins server keeps on monitoring the repository regularly and the same process will be repeated as discussed above.
+
+A Jenkins Pipeline is a set of plugins that support continuous integration and implementation in the Jenkins. It gives us the view of stages or tasks to perform one after the other in pipeline form
+The Jenkins pipeline details are stored in a file that is named as the Jenkins file and it is further connected to the source code repository in general.
+
+sample Jenkins Pipeline Code for Java:
+Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent { docker 'maven:3.3.3' }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+    }
+}
+
+Common directives:
+Agent: – It is directive to tell Jenkins to execute the pipeline in particular manner and order.
+The agent directive tells Jenkins where and how to execute the Pipeline, or subset thereof.
+Post: - post section defines one or more additional steps that are run upon the completion of a Pipeline’s or stage’s run
+Stage:- the stages section is where the bulk of the "work" described by a Pipeline will be located. 
+Environment:- environment directive specifies a sequence of key-value pairs which will be defined as environment variables for the all steps, or particular steps of the pipeline.
+Input:- input directive on a stage allows you to prompt for input, using the input step. The stage will pause after any options have been applied, and before entering the stage`s `agent or evaluating its when condition. If the input is approved, the stage will then continue. 
+
+To start Jenkins - type in command prompt : java -jar jenkins.war
+Once the service is up and running, acess Jenkins via the URL http://localhost:8080
+Manage Jenkins -> Configure System -> (Optional, not seeing this in latest build) Set the Java Home Path and email parameters
+Under Build, use one the the four options to run Jenkins:
+1. Windows Batch Command
+2. Execute Shell
+3. Invoke Ant
+4. Invoke Maven
+Create TestNG XML in the same folder where we have the lib and bin folders
+In Notepad create a new file, save it as run.bat with contents as java -cp bin;libs/* org.testng.TestNG.xml
+https://huddle.eurostarsoftwaretesting.com/integration-of-jenkins-with-selenium-webdriver/
+
+how to automate the batch run of selenium scripts using Jenkins or any other tool.
+how to validate database migration using selenium - 
+JDBC concepts in java and connections using selenium
+
+Q) Core Java concepts method over riding over loading encapsulation and OOPS
+Method overloading in Java is a programming concept when programmer declares two methods of the same name but with different method signature.
+overloading means multiple methods with the same name but with a different signature. If multiple methods with same signature but different return type then it is not overloading
+Overloaded methods are fast because they are bonded during compile time and no check or binding is required during runtime
+class overloadExample{
+	static int add(int a, int b) {return a+b;}
+	static int add(int a, int b, int c) {return a+b+c;}
+}
+
+If subclass (child class) has the same method as declared in the parent class, it is known as method overriding in Java
+The subclass provides the specific implementation of the method that has been declared by one of its parent class
+Method overriding is used to provide the specific implementation of the method that is already provided by its super class.
+class Animal{
+	void eat() { System.out.prinln("Eating"); }
+}
+class Dog extends Animal{
+	void eat() { System.out.println("Dog is eating"); }
+}
+4 fundamental concepts of OOPS - Abstraction, Encapsulation, Inheritance and Polymorphism(Method overloading and Method Overriding)
+
+Encapsulation:
+Refers to the bundling of data with the methods that operate on that data.
+Encapsulation is used to hide the values or state of a structured data object inside a class, preventing unauthorized parties' direct access to them
+
+Abstraction refers to concealing the implementation details from the user and allowing him to see only the functionality (input vs output)
+An abstract class can only be inherited, it cannot be instantiated individually.
+
+Inheritance can be defined as the process in which one class acquires properties or methods of another class.
+
+Q) Cucumber
+Selenium cucumber is a behviour driven development approach to write automation scripts. It can be applied to both desktop and mobile apps.
+It uses a feature file which describes the test cases in plain text format. Contents of feature file - Feature, User Scenario, Outline, Given clause, When clause, then clause.
+Important keywords - Given, When, Then
+Given - Pre Condition
+When - Actions
+Then - Result or outcome
+2 files needed to run cucumber - feature file and step definition file
+cucumber tags are used to filter the scenarios. We can tag the scenarios and we can execute the scenarios based on tags
+Scenario outline is used to execute the same scenario with different test data
+
+Q) TestNG concepts and framework, reporting
+TestNG is a framework which enables us to group test cases, prioritize cases, execute batches, generate reports.
+Advantages of TestNG:
+1. TestNG Annotations are easy to create test cases.
+2. Test Cases can be grouped and prioritized more easily and effectively.
+3. Executing multiple programs or classes using XML file.
+4. Parallel Testing is supported.
+5. Generates test reports that are not present by default in Selenium.
+main method is not used in TestNG programs
+TestNG programs contain methods only that are made up of annotations
+if we dont write @Test annotation, then the test case (function/method) wont be executed
+TestNG verification methods can be used instead of if statements - Assert statements
+TestNG will execute functions within a class in alphabetical order. To change this, use the 'priority' attribute.
+Priority attribute cannot be used if there is functionality dependency among cases or methods.
+Using DependsOnMethods attribute is another way to prioritize test cases which overcomes the above shortcoming of priority attribute.
+If any function fails, all other functions which depend directly or indirectly on it will be skipped.
+If we want any function to run irrespective of priority or dependency use the "alwaysRun=True" 
+Choose the right attribute:
+1. If there is no functionality dependency between cases or methods -> priority attribute
+2. If there is functionality dependency between cases or methods -> dependsOnMethods attribute
+3. If there is functionality dependency between some cases only -> alwaysRun attributeattribute.
+@BeforeMethod() attribute will run the method before each method defined. It will not be counted as a separate test case or method, and is like a pre condition
+Similarly @AfterMethod()
+TestNG XML File for executing multiple programs
+<suite name = "suite">
+<test name = "test">
+<classes>
+<class name = "packagename.classname">
+</classes>
+The above XML can be modified to do parallel run of test methods, and also by providing optional parameter for # of threads on which to run the parallel tests
+<suite name="suitename" parallel="methods" thread-count='3'>
+</test>
+</suite>
+Use the exclude tag if you want any test to be excluded - <exclude name="testName"/>. Similarly use the include tag as well. Wild cards can be used in the tag names.
+
+Q) how to locate web table, how to read / fetch a particular value from the web table, how to deal with dynamic tables
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("file:\\C:\\Users\\faiz1\\Desktop\\Selenium\\Table Demo.html");
+		
+		WebElement table = driver.findElement(By.xpath("/html/body/table/tbody"));
+
+		List < WebElement > rows = table.findElements(By.tagName("tr"));
+		for(int i=0;i<rows.size();i++){
+			List<WebElement> columns=rows.get(i).findElements(By.tagName("td"));
+			System.out.println("Number of columns on row# " +i+ ": "+columns.size());
+			for(int j=0;j<columns.size();j++){
+				System.out.println("Element at row# "+ (i+1) +", column# "+ (j+1) + " is: " +columns.get(j).getText());
+			}
+		} 
+
+		
+	    driver.close();
