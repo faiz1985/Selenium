@@ -1,0 +1,55 @@
+Create testNG project
+in the src folder Java file, code:
+
+package Parametrization;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.Parameters;
+
+
+public class Parametrization {
+	
+	@Parameters({"uname", "URL", "pwd"})
+	@Test
+  public void testNGParameterization(String userName, String URL, String pass) {
+	  System.out.println(URL);
+	  System.out.println(userName);
+	  System.out.println(pass);
+  }
+}
+
+content of the testng.xml file:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="parametrizationSuite">
+
+<parameter name="URL" value="faisel.farooq.com"/>
+<parameter name="uname" value="faisel"/>
+<parameter name="pwd" value="farooq"/>
+ 
+ <test thread-count="5" name="parametrizationTest">
+     <classes>
+      <class name="Parametrization.Parametrization"/>
+    </classes>
+  </test> <!-- parametrizationTest -->
+</suite> <!-- parametrizationSuite -->
+
+
+The Parameter tags can be defined at a suite level (as above), or at a test/class level where it will be accessible to the particular class or test only.
+In the below XML code, pwd is accessible only to the test "parametrizationTest" whereas URL and uname are accessible to all tests (considering multiple tests, however below XML file has only 1 test)
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="parametrizationSuite">
+
+<parameter name="URL" value="faisel.farooq.com"/>
+<parameter name="uname" value="faisel"/>
+<parameter name="pwd" value="farooq"/>
+ 
+ <test thread-count="5" name="parametrizationTest">
+ <parameter name="pwd" value="farooq"/>
+     <classes>
+      <class name="Parametrization.Parametrization"/>
+    </classes>
+  </test> <!-- parametrizationTest -->
+</suite> <!-- parametrizationSuite -->
