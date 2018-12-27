@@ -23,3 +23,6 @@ Solution - make sure the class tag has the value packagename.classname
 Getting error Could not find or load main class org.testng.TestNG
 Solution 1 - Ensure the testNG JARs are all in the same lib folder along with all other JARs
 Solution 2 - Ensure the Binary files of Jenkins are on the machine, and the path of these binaries is provided in Jenkins configuration
+
+6. A JNI error has occurred, please check your installation and try again
+Solution: Add all required JARs in the buikd path and run again
