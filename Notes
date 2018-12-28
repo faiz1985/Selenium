@@ -919,6 +919,20 @@ Maven Steps:
 2. Add all software dependencies to Maven POM XML so that Maven can download the s/w & add to project
 3. Download and use the POM XML file
 
+POM XML file of maven can be used to run a TestNG suite by invoking the testng.xml file. In the POM XML, add the below tags:
+
+<plugin>
+.
+.
+<configuration>
+	<suiteXmlFiles>
+		<suiteXmlFile>testng</suiteXmlFile>
+	</suiteXmlFiles>
+</configuration>
+</plugin>
+
+If multiple XML files are to be invoked, they can all be added and invoked.
+
 Advantages of Maven Integration:
 1. All required dependencies like WebDriver, TestNG etc can be added to the POM XML. Re use the XML to have those JARs added each time the XML is used.
 2. XML can be updated on any machine and reused on other machines to retain configuration.
