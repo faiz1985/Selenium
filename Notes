@@ -1098,6 +1098,18 @@ Create TestNG XML in the same folder where we have the lib and bin folders
 In Notepad create a new file, save it as run.bat with contents as java -cp bin;libs/* org.testng.TestNG.xml
 https://huddle.eurostarsoftwaretesting.com/integration-of-jenkins-with-selenium-webdriver/
 
+Simple steps for framework using testNG, Maven & Jenkins:
+Create New Java Project
+Create TestNG Class
+Update testng.xml to include or exlude suites/classes/tests
+Import into new Maven Project
+Update pom.xml to include or exclude desired testng.xml's (there may be multiple testng XMLs based on project need)
+Create new freestyle project in Jenkins -> Build -> Invoke tope level Maven Projects -> Enter the goals as test -PSuiteName or compile or any other maven command. the command need not be prefixed with mvn, Jenkins will automatically add that during build
+Add as many Goals as required and save.
+Build now will run all the goals.
+
+Java Project -> TestNG Class -> testng.xml -> Maven Project -> POM.xml -> Jenkins Freestyle Project -> Build
+
 how to automate the batch run of selenium scripts using Jenkins or any other tool.
 how to validate database migration using selenium - 
 JDBC concepts in java and connections using selenium
