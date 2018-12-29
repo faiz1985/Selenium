@@ -931,7 +931,15 @@ POM XML file of maven can be used to run a TestNG suite by invoking the testng.x
 </configuration>
 </plugin>
 
-If multiple XML files are to be invoked, they can all be added and invoked.
+If multiple XML files are to be invoked, they can all be added and invoked as below:
+<suiteXmlFiles>
+	<suiteXmlFile>testng</suiteXmlFile>
+	<suiteXmlFile>testngRegression</suiteXmlFile>
+</suiteXmlFiles>
+
+If we need to invoke only particular XML (corresponding to a suite or functionality then we can update POM XML file with the profiles and invoke using command line:
+mvn compile
+mvn test -PRegression //where P stands for Profile and the text following P is the name given under the ID tag
 
 Advantages of Maven Integration:
 1. All required dependencies like WebDriver, TestNG etc can be added to the POM XML. Re use the XML to have those JARs added each time the XML is used.
@@ -941,6 +949,82 @@ Steps to create Maven Project:
 >Project
 >Type Maven & select Maven Project
 >Enter-Next-Next-Enter Group ID-Enter Artifact ID-Finish
+
+POM.XML containing 2 profiles where XMLs referenced in both profiles are the testng xml files invoking either the smoke suite or regression suite:
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>newMvn</groupId>
+  <artifactId>mvnArt</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>MavenProj</name>
+  <description>TrialMaven</description>
+  
+  <dependencies>
+  
+
+<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>3.14.0</version>
+</dependency>
+
+  
+<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>6.14.3</version>
+    <scope>test</scope>
+</dependency>
+ </dependencies>
+ 
+ 
+ <profiles>
+ <profile>
+  <id>Smoke</id>
+ <build>
+  <plugins> 
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.18.1</version>
+    <configuration>
+     <suiteXmlFiles>
+      <suiteXmlFile>testngSmoke.xml</suiteXmlFile>
+     </suiteXmlFiles>
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
+  </profile>
+  
+  
+  <profile>
+  <id>Regression</id>
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.18.1</version>
+    <configuration>
+     <suiteXmlFiles>
+      <suiteXmlFile>testng.xml</suiteXmlFile>
+     </suiteXmlFiles>
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
+  </profile>
+  
+  </profiles> 
+  
+  
+  
+  
+  
+</project>`
 
 WebDriver Dependency code can be found in below link:
 https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
