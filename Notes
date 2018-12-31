@@ -1100,15 +1100,20 @@ https://huddle.eurostarsoftwaretesting.com/integration-of-jenkins-with-selenium-
 
 Simple steps for framework using testNG, Maven & Jenkins:
 Create New Java Project
+Optional but recommended - 
+	Link the project to repository like git (right click on project -> team -> share project -> create new repository -> Finish. 
+	Right Click project -> Team -> Commit -> select all files from staged area and add -> enter commit message -> Commit & Push
+		if it is first time then a dialog box will open in which you need to ener the git URL and credentials
 Create TestNG Class
 Update testng.xml to include or exlude suites/classes/tests
 Import into new Maven Project
 Update pom.xml to include or exclude desired testng.xml's (there may be multiple testng XMLs based on project need)
 Create new freestyle project in Jenkins -> Build -> Invoke tope level Maven Projects -> Enter the goals as test -PSuiteName or compile or any other maven command. the command need not be prefixed with mvn, Jenkins will automatically add that during build
-Add as many Goals as required and save.
+	Add as many Goals as required and save (this may be used for invoking multiple suites within POM.XML)
+	Jenkins can also be configured to run build each time new code is committed
 Build now will run all the goals.
 
-Java Project -> TestNG Class -> testng.xml -> Maven Project -> POM.xml -> Jenkins Freestyle Project -> Build
+Java Project -> TestNG Class -> testng.xml -> (Integrate with Git) -> Maven Project -> POM.xml -> Jenkins Freestyle Project -> Build
 
 how to automate the batch run of selenium scripts using Jenkins or any other tool.
 how to validate database migration using selenium - 
