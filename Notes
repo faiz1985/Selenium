@@ -1103,9 +1103,12 @@ Create New Java Project
 Optional but recommended - 
 	Link the project to repository like git (right click on project -> team -> share project -> create new repository -> Finish. 
 	Right Click project -> Team -> Commit -> select all files from staged area and add -> enter commit message -> Commit & Push
-		if it is first time then a dialog box will open in which you need to ener the git URL and credentials
+		if it is first time then a dialog box will open in which you need to enter the git URL and credentials
 Create TestNG Class
-Update testng.xml to include or exlude suites/classes/tests
+Optional but recommended - Create Object Repository POM file(s)
+Optional but recommended - Create config properties file to define parameters
+Update testng.xml to include or exlude suites/classes/tests.
+	TestNG file can also be used to define suite level or class level parameters
 Import into new Maven Project
 Update pom.xml to include or exclude desired testng.xml's (there may be multiple testng XMLs based on project need)
 Create new freestyle project in Jenkins -> Build -> Invoke tope level Maven Projects -> Enter the goals as test -PSuiteName or compile or any other maven command. the command need not be prefixed with mvn, Jenkins will automatically add that during build
