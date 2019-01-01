@@ -61,6 +61,8 @@ The methods in the object file can be called in using the same process as earlie
 in this ex.:
 pageObjModel pom = new pageObjectModel();
 pom.setUserName("faiz1985@gmail.com");
+pom.setPwd("...");
+pom.clickLoginBtn();
 )
 
 Eg., in the page object factory file:
