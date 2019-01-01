@@ -105,3 +105,10 @@ If we know that element is always present on the page then it is best to use the
 @CacheLookup
 WebElement pwd;
 Without this, every time when we turn to our element, WebDriver will check if the element is present on the page or not hence reducing performance.
+
+Advantages of POM:
+•	Easy to Maintain
+•	Easy Readability of scripts
+•	Reduce or Eliminate duplicacy
+•	Re-usability of code
+•	Reliability
