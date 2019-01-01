@@ -7,6 +7,8 @@ Under this model, Container classes for web elements are created that behave as 
 Under this model, for each web page in the application, there should be corresponding page class.
 POM can be created in 2 ways - without page factory and with page factory
 Allows reusability of elements, hence reduces code size thereby increasing performance and efficiency or the program
+If # of elements is too large, then it is recommended as best practice to create separate file for each web page so that it is easier to distinguish elements page wise
+
 
 Without Page Factory:
 -------------------------
