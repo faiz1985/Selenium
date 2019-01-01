@@ -8,7 +8,8 @@ Under this model, for each web page in the application, there should be correspo
 POM can be created in 2 ways - without page factory and with page factory
 Allows reusability of elements, hence reduces code size thereby increasing performance and efficiency or the program
 
-
+Without Page Factory:
+-------------------------
 To create POM:
 By <variableName> = By.elementLocator(<Value>);
 
@@ -48,4 +49,49 @@ public class pageObjectModel {
 		public void clickButton() {
 			abcd.findElement(loginButton).click();
 		}
+}
+
+With Page Factory:
+------------------------
+We use the same concept of having the objects & related operations in a separate file, with the exception that elements are 
+located using the @FindBy annotation. This annotation supports all regular locators.
+Also, an initElements method is called in the constructor which will create all the elements once invoked.
+The methods in the object file can be called in using the same process as earlier - create an object of the file and invoke.
+(
+in this ex.:
+pageObjModel pom = new pageObjectModel();
+pom.setUserName("faiz1985@gmail.com");
+)
+
+Eg., in the page object factory file:
+
+public class pageObjModel {
+	WebDriver driver;
+	
+	@FindBy(name="username")
+	WebElement uname;
+	
+	@FindBy(name="password")
+	WebElement pwd;
+	
+	@FindBy(className="_1q0oQo76jB7KFKWPCMPzDW")
+	WebElement clkBtn;
+	
+	public pageObjModel(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	public void setUserName(String usrName) {
+		uname.sendKeys("faiz1985@gmail.com");
+	}
+	
+	public void setPwd(String passwd) {
+		pwd.sendKeys("Novem*2018");
+	}
+	
+	public void clickLoginBtn() {
+		clkBtn.click();
+	}
+	
 }
