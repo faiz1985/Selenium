@@ -99,3 +99,9 @@ public class pageObjModel {
 	}
 	
 }
+
+If we know that element is always present on the page then it is best to use the following declaration:
+@FindBy(how=How.xpath, using=" //*[@id='account_logout']/a ")
+@CacheLookup
+WebElement pwd;
+Without this, every time when we turn to our element, WebDriver will check if the element is present on the page or not hence reducing performance.
