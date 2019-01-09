@@ -318,7 +318,7 @@ Client ETS, Employer UBS – Round 3
 1.	What is Headless Browser testing?
 2.	If a UAT code is checked in, how can we run scripts in test env? We just define the UAT environment URL in the properties file or the testing file, parameters section and call the tests accordingly.
 3.	How do we separate tests based on browser? Where is browser defined and how it can be used to run particular test on that browser?
-@Parameter(“browser”) //this comes from the parameters section of testing file
+@Parameter(“browser”) //this comes from the parameters section of testng XML file
 Public void setup(String browser) {
 If(browser.equalsIgnoreCase(“Chrome”)){ WebDriver driver = new ChromeDriver(); }
 Else if(browser.equalsIgnoreCase(“ie”)){ WebDriver driver = new InternetExplorerDriver(); }
