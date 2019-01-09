@@ -1,6 +1,14 @@
 12/21/2018
 Client ETS, Employer UBS
 1. Explain how selenium framework implemented in current project.
+  We are using JAVA as our scripting language
+  We are using the TestNG framework and annotations to define our tests
+  We are using Page Object Model with Page Factory framework
+    We maintain a page class for every page in our application 
+    We have a base page class for common functions use by all pages
+  For static variables, we are passing the values by parameterizing TestNG xml file or through a config.properties file by using Selenium's Properties class
+  We are using standardized maven project for dependency management
+  We are using Jenkins to automate the smoke or regression suite run of test cases
 2. Elaborate on Jenkins implementation in the current project.
 3. Significance of POM.XML file in Jenkins implementation.
 4. Scheduler Types in Jenkins - Windows bat file and invoke Maven.
