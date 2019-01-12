@@ -26,3 +26,7 @@ Solution 2 - Ensure the Binary files of Jenkins are on the machine, and the path
 
 6. A JNI error has occurred, please check your installation and try again
 Solution: Add all required JARs in the buikd path and run again
+
+7. java.lang.IllegalStateException: The path to the driver executable must be set by the webdriver.gecko.driver system property; for more information, see https://github.com/mozilla/geckodriver.
+Solution 1 - Ensure the latest driver file is downloaded and used
+Solution 2 - Ensure you are using System.setProperty and not System.getProperty
