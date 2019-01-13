@@ -1215,3 +1215,6 @@ Q) how to locate web table, how to read / fetch a particular value from the web 
 
 		
 	    driver.close();
+
+//wait for a certain amount of time before throwing an exception that it cannot find the element on the page
+driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
