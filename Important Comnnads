@@ -20,3 +20,6 @@
 > To Click 'Ok' on alert or message pop up:
   Alert alert = driver.switchTo().alert();
   alert.accept();
+
+> Wait for a certain amount of time before throwing an exception that it cannot find the element on the page:
+driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
