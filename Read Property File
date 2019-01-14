@@ -1,10 +1,14 @@
 //Create Property File in Eclipse - right click on package -> New -> File -> <fileName>.properties
+The property file should have values defined without double quotes or ;
+Eg - 
+URL=http://www.google.com
+username=faiz1985@gmail.com
 //Copy path of the file: Right click on the property file in eclipse -> properties -> copy path
 
 //within a new class or existing, write below code
-    prop = new Properties();
-		ip = new FileInputStream("<path of the property File>");
-		prop.load(ip);
+    	Propoerties prop = new Properties();
+	FileInputStream ip = new FileInputStream("<path of the property File>");
+	prop.load(ip);
     
  //To read any value from property file, e.g if prop file has an entry username=faiz1985
     uname = prop.getProperty("username");
