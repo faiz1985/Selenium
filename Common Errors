@@ -31,3 +31,8 @@ Solution: Add all required JARs in the buikd path and run again
 7. java.lang.IllegalStateException: The path to the driver executable must be set by the webdriver.gecko.driver system property; for more information, see https://github.com/mozilla/geckodriver.
 Solution 1 - Ensure the latest driver file is downloaded and used
 Solution 2 - Ensure you are using System.setProperty and not System.getProperty
+
+8. While downloading Maven project from GIT, if the pom.xml has a red cross mark but no error is seen:
+right click on project -> Build Path -> Configure Build Path -> Maven Depnedencies -> download the jar(s) which are marked with a red cross,
+and store them in the location mentioned next to the jar(s). 
+Refresh the project and invoke TESTNG.XML file again.
