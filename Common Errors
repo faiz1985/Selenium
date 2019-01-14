@@ -36,3 +36,6 @@ Solution 2 - Ensure you are using System.setProperty and not System.getProperty
 right click on project -> Build Path -> Configure Build Path -> Maven Depnedencies -> download the jar(s) which are marked with a red cross,
 and store them in the location mentioned next to the jar(s). 
 Refresh the project and invoke TESTNG.XML file again.
+
+9. java.lang.NoClassDefFoundError: com/google/common/collect/ImmutableMap
+Delete the guava.jar (most likely caused by mulitple versions of guava jars) and add just 1 guava jar. Clean project and run
