@@ -17,7 +17,8 @@ If required move the source code file under newly created TestNG->Src folder and
 
 4. While invoking TestNG XML:
 Cannot find class in classpath
-Solution - make sure the class tag has the value packagename.classname
+Solution 1 - make sure the class tag has the value packagename.classname
+Solution 2 - Project > Clean -> Clean All projects; run the project again using testng.xml file
 
 5. While running a build of Jenkins:
 Getting error Could not find or load main class org.testng.TestNG
