@@ -1218,3 +1218,12 @@ Q) how to locate web table, how to read / fetch a particular value from the web 
 
 //wait for a certain amount of time before throwing an exception that it cannot find the element on the page
 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+To Read data from Util File:
+Util file can be used as another source of data where parameters are defined, preferably those that do not change much like URL, username, pwd etc.
+To use a Util file, right click on package -> New -> Package -> create file with name as Util.java
+Define parameters in this class eg., public static final String MY_NAME="Faisel Farooq";
+In the main class where this needs to be used, we can directly call the parameter:
+System.out.println("Data from Util File for trial: " + Util.MY_NAME);
+
+
