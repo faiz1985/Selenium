@@ -39,3 +39,7 @@ Refresh the project and invoke TESTNG.XML file again.
 
 9. java.lang.NoClassDefFoundError: com/google/common/collect/ImmutableMap
 Delete the guava.jar (most likely caused by mulitple versions of guava jars) and add just 1 guava jar. Clean project and run
+
+10. jxl.read.biff.BiffException: Unable to recognize OLE stream
+Solution - If JXL library is being used, ensure the excel sheet is xls format and not xlsx. JXL cannot read xlsx or csv format.
+To work with xlsx files, use the POI library
