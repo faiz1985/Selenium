@@ -322,3 +322,39 @@ Client ETS, Employer UBS – Round 3
 Public void setup(String browser) {
 If(browser.equalsIgnoreCase(“Chrome”)){ WebDriver driver = new ChromeDriver(); }
 Else if(browser.equalsIgnoreCase(“ie”)){ WebDriver driver = new InternetExplorerDriver(); }
+
+
+
+----------------------------------------------------------
+Insurance Tool EBIX:
+EBIX
+-------
+Standalone client and policy management system
+Cloud based tool for insurance products
+Provides access to large number of business processing capabilities for insurance clients
+Common functions :
+Customer-
+	Add New Customer-
+	Search Customer-
+Quotes-
+	Add New Quote
+	Search Quote
+Policies-
+	Add New Policy
+	Find Policy
+	Renew Policy
+	Import Policy
+	Cancel Policy
+Administration
+	My Details
+	Print Queue ( to print policy documents of any customer )
+	Configuration
+It's Life & Annuity offerings include Enterprise CRM, New Business & Underwriting, Policy Delivery, Policy Administration etc.
+Insurance Sync downloads book of business eg. policies and cases from different insurance carriers for x # of years
+Insurance Sync dashboard provides graph tools to slice the data in various ways
+Insurance Sync Pending Cases
+Insurance SYnc in force policies
+Some of the fields in the above 2 mentioned sections include Case ID, Policy holder details like demographic details & Contact details; case status; Benefit amount; Premium amount etc
+Cross Marketing tab provides more detail analysis like policies expiring in next 90 days etc; prospect client details.
+Also provides integration capabilities with other systems as required
+
