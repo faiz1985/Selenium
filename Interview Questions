@@ -7,7 +7,8 @@ tagName
 linkText
 partialLinkText
 cssSelector
-xpath - used to find the location of elements on the web page using HTML DOM structure. It is slower in execution, so should be the last preference.
+xpath - used to find the location of elements on the web page using HTML DOM structure. It is slower in execution, so should be the 
+last preference.
 Categories of Selenium webDriver Commands:
 1. Browser Regular Commands
 2. Browser Navigation Commands
@@ -40,9 +41,12 @@ If we know that element is always present on the page then it is best to use the
 @FindBy(how=How.xpath, using=" //*[@id='account_logout']/a ")
 @CacheLookup
 WebElement pwd;
-Without this, every time when we turn to our element, WebDriver will check if the element is present on the page or not, hence reducing performance.
+Without this, every time when we turn to our element, WebDriver will check if the element is present on the page or not, hence 
+reducing performance.
 
-Why use Page Factory POM vs. POM without Page Factory – using Page Factory model, all the objects are initialized at the start of the script when the initElements method is called. If using POM without a Page Factory, the elements are initialized as and when they are called, thus reducing performance.
+Why use Page Factory POM vs. POM without Page Factory – using Page Factory model, all the objects are initialized at the start of 
+the script when the initElements method is called. If using POM without a Page Factory, the elements are initialized as and when 
+they are called, thus reducing performance.
 
 Advantages of POM:
 •	Easy to Maintain
@@ -62,7 +66,8 @@ main method is not used in TestNG programs
 TestNG programs contain methods only that are made up of annotations
 if we don't write @Test annotation, then the test case won’t be executed
 TestNG verification methods can be used instead of if statements - Assert statements
-TestNG will execute functions within a class in alphabetical order. To change this, use the 'priority', 'dependsOnMethods' or 'alwaysRun' attribute.
+TestNG will execute functions within a class in alphabetical order. To change this, use the 'priority', 'dependsOnMethods' or 
+'alwaysRun' attribute.
 
 Choose the right attribute:
 1. If there is no functionality dependency between cases or methods -> priority attribute
@@ -71,8 +76,10 @@ Choose the right attribute:
 
 TestNG Common Annotations:
 @Test - denotes a test case
-@BeforeMethod - the annotated method will be run before each test case. This is like a common pre condition. Eg - open a browser before each URL navigation.
-@AfterMethod - annotated method will be run after each test case. This is like a common post condition. Eg - close a browser after each URL navigation.
+@BeforeMethod - the annotated method will be run before each test case. This is like a common pre condition. 
+Eg - open a browser before each URL navigation.
+@AfterMethod - annotated method will be run after each test case. This is like a common post condition. 
+Eg - close a browser after each URL navigation.
 This is method level annotation.
 
 @BeforeTest - Annotated method will be the first to run before any test method in a group is executed.
@@ -81,7 +88,8 @@ This is a group level annotation.
 
 @BeforeClass - Annotated method will run as the first test method in the current class
 @AfterClass - Annotated method will run after all the test methods in the current class
-In @AnnotationsProgram (replace method with class in the annotation), launchBrowser is executed just once before any of the method is run; and closeBrowser is run just once after all the methods are executed.
+In @AnnotationsProgram (replace method with class in the annotation), launchBrowser is executed just once before any of the 
+method is run; and closeBrowser is run just once after all the methods are executed.
 This is class level annotation.
 
 @DataProvider indicates that the function will be a source of data. The data can come from any of the following sources:
@@ -160,8 +168,11 @@ Groups are defined at method level as follows:
 @Test(groups={"sanity", "regression"}, priority=1)
 Maven
 Maven is a build automation tool used for creating and maintaining environment configuration.
-Maven is a build / project management tool, based on the concept of a page object model (POM) that contains information of project and configuration information for the maven to build the project such as dependencies, build directory, source directory, test source directory, plugin, goals etc.
-Maven defines a standard way to build the projects, test, and deploy project artifacts. It provides a framework that enables easy reuse of common build logic for all projects following Maven's standards
+Maven is a build / project management tool, based on the concept of a page object model (POM) that contains information of 
+project and configuration information for the maven to build the project such as dependencies, build directory, source directory, 
+test source directory, plugin, goals etc.
+Maven defines a standard way to build the projects, test, and deploy project artifacts. It provides a framework that enables 
+easy reuse of common build logic for all projects following Maven's standards
 
 Maven Steps:
 1. Create Maven Project (built in eclipse IDE)
@@ -191,7 +202,8 @@ Maven Steps:
 </project>
 
 Maven POM XML file
-POM XML file of maven can be used to run a TestNG suite by invoking the testng.xml (or any other XML) file. In the POM XML, add the below tags after dependencies:
+POM XML file of maven can be used to run a TestNG suite by invoking the testng.xml (or any other XML) file. In the POM XML, 
+add the below tags after dependencies:
 <profiles>
 	<profile>
 		<id>SmokeSuite</id>
@@ -222,7 +234,8 @@ Jenkins
 Jenkins is an open source tool for continuous integration purpose.  
 Continuous integration is a process in which all development work is integrated as early as possible. 
 The principle functionality of Jenkins is to keep a track of version control system.
-Running Selenium tests in Jenkins allows you to run your tests every time your software changes and deploy the software to a new environment when the tests pass.
+Running Selenium tests in Jenkins allows you to run your tests every time your software changes and deploy the software to a 
+new environment when the tests pass.
 Jenkins can schedule tests to run at specific time and / or when a specific action / state is triggered.
 Jenkins is integrated with 2 components -> Build tool like ant ,maven etc. & Version control system like SVN, GIT.
 
@@ -234,16 +247,21 @@ Achieves continuous integration agile development and test driven development
 With simple steps, maven release project is automated
 Easy tracking of bugs at early stage in development environment than production
 
-A Jenkins Pipeline is a set of plugins that support continuous integration and implementation in the Jenkins. It gives us the view of stages or tasks to perform one after the other in pipeline form
-The Jenkins pipeline details are stored in a file that is named as the Jenkins file and it is further connected to the source code repository.
+A Jenkins Pipeline is a set of plugins that support continuous integration and implementation in the Jenkins. It gives us the 
+view of stages or tasks to perform one after the other in pipeline form
+The Jenkins pipeline details are stored in a file that is named as the Jenkins file and it is further connected to the source 
+code repository.
 
 Common directives in Jenkins pipeline file:
 Agent: – It is directive to tell Jenkins to execute the pipeline in particular manner and order.
 The agent directive tells Jenkins where and how to execute the Pipeline, or subset thereof.
 Post: - post section defines one or more additional steps that are run upon the completion of a Pipeline’s or stage’s run
 Stage:- the stages section is where the bulk of the "work" described by a Pipeline will be located. 
-Environment:- environment directive specifies a sequence of key-value pairs which will be defined as environment variables for the all steps, or particular steps of the pipeline.
-Input:- input directive on a stage allows you to prompt for input, using the input step. The stage will pause after any options have been applied, and before entering the stage`s `agent or evaluating its when condition. If the input is approved, the stage will then continue. 
+Environment:- environment directive specifies a sequence of key-value pairs which will be defined as environment variables for 
+the all steps, or particular steps of the pipeline.
+Input:- input directive on a stage allows you to prompt for input, using the input step. The stage will pause after any options 
+have been applied, and before entering the stage`s `agent or evaluating its when condition. If the input is approved, the stage 
+will then continue. 
 
 
 Start Jenkins - type in command prompt: java -jar jenkins.war
@@ -262,15 +280,19 @@ In Notepad create a new file, save it as run.bat with contents as java -cp bin;l
 To invoke test using Maven:
 Under the configuration section that opens when you click on 'Invoke Maven':
 1. Enter the path of the POM.XML file
-2. Under Goals, provide the maven commands without the 'mvn' keyword. Eg, test - will run the tests specified in testng.xml file in POM.XML (under the suiteXmlFile tag)
-3. If multiple profiles are present in the POM.XML, invoke using the name specified in the ID tag of the profile section in POM.XML. Eg, if ID tag has value of sanity, command would be test –Psanity
+2. Under Goals, provide the maven commands without the 'mvn' keyword. Eg, test - will run the tests specified in testng.xml file 
+in POM.XML (under the suiteXmlFile tag)
+3. If multiple profiles are present in the POM.XML, invoke using the name specified in the ID tag of the profile section in POM.XML. 
+Eg, if ID tag has value of sanity, command would be test –Psanity
 
 To invoke test periodically:
 Under build triggers select ‘build periodically’ option and enter the cron schedule:
 MINUTE (0-59), HOUR (0-23), DAY (1-31), MONTH (1-12), DAY OF THE WEEK (0-7)
 Jenkins also supports convenient aliases as @yearly, @annually, @monthly, @weekly, @daily, @midnight, and @hourly.
-The letter H, representing the word Hash can be inserted instead of any of the values. For eg., start a build first of every month between 2:00 a.m. - 02:30 a.m.: H(0,30) 02 01 * *
-H/5 3,21 * * 1-5 - is Every five minutes between 03:00 and 03:59 and then between 21:00 and 21:59 on Mon -> Fri but starting at some 'random' time.
+The letter H, representing the word Hash can be inserted instead of any of the values. For eg., start a build first of every 
+month between 2:00 a.m. - 02:30 a.m.: H(0,30) 02 01 * *
+H/5 3,21 * * 1-5 - is Every five minutes between 03:00 and 03:59 and then between 21:00 and 21:59 on Mon -> Fri but starting 
+at some 'random' time.
 Integration of all components to build a framework-
 Simple steps for framework using testNG, Maven & Jenkins:
 Create New Java Project
@@ -285,12 +307,14 @@ Update testng.xml to include or exclude suites/classes/tests.
 	TestNG file can also be used to define suite level or class level parameters
 Import into new Maven Project
 Update pom.xml to include or exclude desired testng.xml's (there may be multiple testng XMLs based on project need)
-Create new freestyle project in Jenkins -> Build -> Invoke tope level Maven Projects -> Enter the goals as test -PSuiteName or compile or any other maven command. the command need not be prefixed with mvn, Jenkins will automatically add that during build
+Create new freestyle project in Jenkins -> Build -> Invoke tope level Maven Projects -> Enter the goals as test -PSuiteName or 
+compile or any other maven command. the command need not be prefixed with mvn, Jenkins will automatically add that during build
 	Add as many Goals as required and save (this may be used for invoking multiple suites within POM.XML)
 	Jenkins can also be configured to run build each time new code is committed
 Build now will run all the goals.
 
-Java Project -> TestNG Class -> testng.xml -> (create page object model with or without factory) -> (create config properties file to define parameters) -> (Integrate with Git) -> Maven Project -> POM.xml -> Jenkins Freestyle Project -> Build
+Java Project -> TestNG Class -> testng.xml -> (create page object model with or without factory) -> (create config properties 
+file to define parameters) -> (Integrate with Git) -> Maven Project -> POM.xml -> Jenkins Freestyle Project -> Build
 
 Interview Questions
 Framework implementation:
@@ -299,7 +323,8 @@ We are using the TestNG framework and annotations to define our tests
 We are using Page Object Model with Page Factory framework
 We maintain a page class for every page in our application 
 We have a base page class for common functions use by all pages
-For static variables, we are passing the values by parameterizing TestNG xml file or through a config.properties file by using Selenium's Properties class
+For static variables, we are passing the values by parameterizing TestNG xml file or through a config.properties file by 
+using Selenium's Properties class
 We are using standardized maven project for dependency management
 We are using Jenkins to automate the smoke or regression suite run of test case
 12/21/2018
@@ -310,14 +335,18 @@ Client ETS, Employer UBS
 4. Scheduler Types in Jenkins - Windows bat file and invoke Maven.
 5. How dependencies are defined in Jenkins - POM.XML
 6. How is data (not test data, config data) fed into the scripts - config.properties, testng.xml
-7. Why is Maven integration required for Jenkins - with help of Maven, the build process can trigger the defined TestNG file and invoke tests.
-8. What repository are you using, and how is it configured in Jenkins - under configurations section of Jenkins, Enter the GIT URL and credentials.
+7. Why is Maven integration required for Jenkins - with help of Maven, the build process can trigger the defined TestNG 
+file and invoke tests.
+8. What repository are you using, and how is it configured in Jenkins - under configurations section of Jenkins, Enter 
+the GIT URL and credentials.
 
 1/2/2019
 Client ETS, Employer UBS – Round 3
 1.	What is Headless Browser testing?
-2.	If a UAT code is checked in, how can we run scripts in test env? We just define the UAT environment URL in the properties file or the testing file, parameters section and call the tests accordingly.
-3.	How do we separate tests based on browser? Where is browser defined and how it can be used to run particular test on that browser?
+2.	If a UAT code is checked in, how can we run scripts in test env? We just define the UAT environment URL in the 
+properties file or the testing file, parameters section and call the tests accordingly.
+3.	How do we separate tests based on browser? Where is browser defined and how it can be used to run particular test 
+on that browser?
 @Parameter(“browser”) //this comes from the parameters section of testng XML file
 Public void setup(String browser) {
 If(browser.equalsIgnoreCase(“Chrome”)){ WebDriver driver = new ChromeDriver(); }
@@ -354,7 +383,8 @@ Insurance Sync downloads book of business eg. policies and cases from different 
 Insurance Sync dashboard provides graph tools to slice the data in various ways
 Insurance Sync Pending Cases
 Insurance SYnc in force policies
-Some of the fields in the above 2 mentioned sections include Case ID, Policy holder details like demographic details & Contact details; case status; Benefit amount; Premium amount etc
+Some of the fields in the above 2 mentioned sections include Case ID, Policy holder details like demographic details & Contact details; 
+case status; Benefit amount; Premium amount etc
 Cross Marketing tab provides more detail analysis like policies expiring in next 90 days etc; prospect client details.
 Also provides integration capabilities with other systems as required
 
