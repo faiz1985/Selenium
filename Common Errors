@@ -29,8 +29,10 @@ Solution 2 - Ensure the Binary files of Jenkins are on the machine, and the path
 Solution: Add all required JARs in the buikd path and run again
 
 7. java.lang.IllegalStateException: The path to the driver executable must be set by the webdriver.gecko.driver system property; for more information, see https://github.com/mozilla/geckodriver.
+java.lang.IllegalStateException: The path to the driver executable must be set by the webdriver.chrome.driver system property
 Solution 1 - Ensure the latest driver file is downloaded and used
 Solution 2 - Ensure you are using System.setProperty and not System.getProperty
+Solution 3 - Ensure no spelling errors in System.setProperty or it's parameters
 
 8. While downloading Maven project from GIT, if the pom.xml has a red cross mark but no error is seen:
 right click on project -> Build Path -> Configure Build Path -> Maven Depnedencies -> download the jar(s) which are marked with a red cross,
@@ -43,3 +45,7 @@ Delete the guava.jar (most likely caused by mulitple versions of guava jars) and
 10. jxl.read.biff.BiffException: Unable to recognize OLE stream
 Solution - If JXL library is being used, ensure the excel sheet is xls format and not xlsx. JXL cannot read xlsx or csv format.
 To work with xlsx files, use the POI library
+
+11. org.openqa.selenium.SessionNotCreatedException: session not created: This version of ChromeDriver only supports Chrome version 75
+Solution - Ensure the chrome driver file and the chrome version are both supported by each other. If not sure, download latest version
+of both and run
