@@ -326,12 +326,13 @@ Else if(browser.equalsIgnoreCase(“ie”)){ WebDriver driver = new InternetExpl
 
 
 ----------------------------------------------------------
-Insurance Tool EBIX:
+Insurance Tool Specific tools:
 EBIX
 -------
 Standalone client and policy management system
 Cloud based tool for insurance products
 Provides access to large number of business processing capabilities for insurance clients
+It's Life & Annuity offerings include Enterprise CRM, New Business & Underwriting, Policy Delivery, Policy Administration etc.
 Common functions :
 Customer-
 	Add New Customer-
@@ -349,7 +350,6 @@ Administration
 	My Details
 	Print Queue ( to print policy documents of any customer )
 	Configuration
-It's Life & Annuity offerings include Enterprise CRM, New Business & Underwriting, Policy Delivery, Policy Administration etc.
 Insurance Sync downloads book of business eg. policies and cases from different insurance carriers for x # of years
 Insurance Sync dashboard provides graph tools to slice the data in various ways
 Insurance Sync Pending Cases
@@ -358,3 +358,14 @@ Some of the fields in the above 2 mentioned sections include Case ID, Policy hol
 Cross Marketing tab provides more detail analysis like policies expiring in next 90 days etc; prospect client details.
 Also provides integration capabilities with other systems as required
 
+ALIP
+--------
+Accenture Life Insurance and Annuity Platform
+Scalabale software suite that provides solutions to meet needs ranging from booking new business to claims payout
+Policy administration system for annuity business
+Automates operations across the policy life cycle
+Supports the following functions:
+	New Business & Case Management
+	Underwriting
+	Policy Administration
+	Claims Payout
