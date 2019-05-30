@@ -358,7 +358,15 @@ Public void setup(String browser) {
 If(browser.equalsIgnoreCase(“Chrome”)){ WebDriver driver = new ChromeDriver(); }
 Else if(browser.equalsIgnoreCase(“ie”)){ WebDriver driver = new InternetExplorerDriver(); }
 
-
+5/30/2019
+------------
+Navy Mutual (through Johnson)
+1. Difference between findElement and findElements
+	findElement returns a single web element; findElements returns a list of web elements.
+2. Frame commands and operations
+3. How automation engagement is executed in QA
+4. What kind of framework, and why chose that one?
+5. Questions related to EBIX and ALIP
 
 ----------------------------------------------------------
 Insurance Tool Specific tools:
