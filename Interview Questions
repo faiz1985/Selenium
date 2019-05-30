@@ -347,6 +347,12 @@ Client ETS, Employer UBS – Round 3
 properties file or the testing file, parameters section and call the tests accordingly.
 3.	How do we separate tests based on browser? Where is browser defined and how it can be used to run particular test 
 on that browser?
+4. 	How to wait until a particular element is loaded before performing an operation on it?
+By addItem = By.xpath("//input[.='Add Item']");
+// get the "Add Item" element
+WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(addItem));
+element.sendKeys("abc");
+
 @Parameter(“browser”) //this comes from the parameters section of testng XML file
 Public void setup(String browser) {
 If(browser.equalsIgnoreCase(“Chrome”)){ WebDriver driver = new ChromeDriver(); }
