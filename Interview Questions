@@ -370,6 +370,17 @@ called as a Wireframe contains info about the different pages and/or objects and
 scritps cannot be tested until the actual code is in place with the values for element locators.
 4. What kind of framework, and why chose that one?
 5. Questions related to EBIX and ALIP
+6. Common challenges in Selenium/Automation?
+Ans - 
+a) Dealing with pop ups since they can appear based on user profiles or browser type or any other condition.
+popup = @driver.switch_to.alert
+popup.dismiss //for cancel
+popup.accept //ok button
+popup.sendKeys("abcd") //to enter data
+b) Dealing with Java applet data entry / actions on web page. Resolved by implementing mSTAX framework which is IBM proprietary, so
+will not be able to talk more on it
+c) Sync issues, since sometimes a page can take longer to load so the elements might not be found. Use below command:
+Webelement element = wait.Until(ExpectedConditions.presenceOfElementLocated(addItem00;
 
 ----------------------------------------------------------
 Insurance Tool Specific tools:
