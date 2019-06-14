@@ -365,6 +365,9 @@ Navy Mutual (through Johnson)
 	findElement returns a single web element; findElements returns a list of web elements.
 2. Frame commands and operations
 3. How automation engagement is executed in QA
+Ans - If in agile, very less time to create scripts so a basic skeleton script is created based on a document provided by AD. This doc,
+called as a Wireframe contains info about the different pages and/or objects and we design scripts based on this info. However, these
+scritps cannot be tested until the actual code is in place with the values for element locators.
 4. What kind of framework, and why chose that one?
 5. Questions related to EBIX and ALIP
 
