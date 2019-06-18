@@ -175,6 +175,13 @@ Maven defines a standard way to build the projects, test, and deploy project art
 easy reuse of common build logic for all projects following Maven's standards
 
 Maven Steps:
+Maven is a powerful project / build management tool, based on the concept of a POM (Project Object Model) that includes 
+project information and configuration information for Maven such as construction directory, source directory, dependency, 
+test source directory, Goals, plugins, etc.
+Using pom.xml(Maven) you can configure dependencies needed for building testing and running code.
+Maven automatically downloads the necessary files from the repository while building the project
+
+Steps to create Maven:
 1. Create Maven Project (built in eclipse IDE)
 2. Add all software dependencies to Maven POM XML so that Maven can download the s/w & add to project. Barebone POM XML file tags:
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
