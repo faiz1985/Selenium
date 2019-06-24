@@ -1,0 +1,31 @@
+SOAP UI Automation Using Selenium
+1. Create a new project
+2. Create a New class
+3. Define the endpoint (URL that needs to be invoked)
+4. Right click project, create a new XML file and replace default contents with the request XML that is used in the SOAP UI to invoke the request to the endpoint
+5. Create a requestFile object with path of the XML file as the parameter
+6. Build HTTP client by using the HttpClientBuilder.client().Build() command
+7. For invoking the request, we use the POST command and not GET command with endpoint URL as parameter
+8. use setEntity for the input stream entity
+9. Set the header - this tells what kind of request (format) will be send and what response is expected.
+10. Set the response object to retrieve the details.
+11. Save the retrieved details using the BufferedReader parameter
+12. Write logic to display the retrieved details or write to file
+
+
+NOTE - This code has not been tried, it is from the URL https://www.youtube.com/watch?v=ePwtd0aCXZo
+
+public class soap{
+	String endpoint = "htt[://www.webservicex.net/medicareSupplier.asmx";
+	@Test
+	public void getSoadResponse(){
+		File requestFile = new File("pathOfXMLFile");
+		HttpClient client = HttpClientBuilder.create().build();
+		HttpPost post = new HttpPost(endpoint);
+		post.setEntity(new InputStreamEntity(new FileInputStream(requestFile)));
+		post.setHeader("Content-type","text/xml");
+		HttpResponse response = client.execute(post);
+		BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+		//logic to read the data or display on screen
+	}
+}
