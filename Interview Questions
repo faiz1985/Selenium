@@ -9,6 +9,23 @@ partialLinkText
 cssSelector
 xpath - used to find the location of elements on the web page using HTML DOM structure. It is slower in execution, so should be the 
 last preference.
+
+Absolute xpath - defines the path of the element beginning from the root node and traverses through all child nodes. Uses / only/ Eg - 
+html/body/div/div[2]/div/div/div/div/div[1]/div/input
+Relative xpath - defines the path of the element beginning from anywhere within the HTML document. Uses // and not / .Eg - 
+//input[@id = 'username']
+Relative xpath is more preferred since it can identify elements even if UI changes occur
+
+To locate an element partially matching its attribute values in xpath, use the contains method. This is useful when attributes have
+dynamic values but a certain part is still constant. Eg:
+xPathExpression = //*[contains(@name, 'user')]
+
+To locate element using text in xpath:
+xPathExpression = //*[text()='username']
+
+Difference between cssSelector and xPath - xPath allows to traverse up or down in the HTML whereas cssSelector allows only downward navigation
+
+
 Categories of Selenium webDriver Commands:
 1. Browser Regular Commands
 2. Browser Navigation Commands
@@ -350,6 +367,8 @@ the GIT URL and credentials.
 1/2/2019
 Client ETS, Employer UBS – Round 3
 1.	What is Headless Browser testing?
+Use HtmlUnitDriver which is a non GUI driver and does not launch any browser to execute scripts. This driver is faster than other
+drivers like chromedriver, IEDriver etc.
 2.	If a UAT code is checked in, how can we run scripts in test env? We just define the UAT environment URL in the 
 properties file or the testing file, parameters section and call the tests accordingly.
 3.	How do we separate tests based on browser? Where is browser defined and how it can be used to run particular test 
@@ -387,7 +406,29 @@ popup.sendKeys("abcd") //to enter data
 b) Dealing with Java applet data entry / actions on web page. Resolved by implementing mSTAX framework which is IBM proprietary, so
 will not be able to talk more on it
 c) Sync issues, since sometimes a page can take longer to load so the elements might not be found. Use below command:
-Webelement element = wait.Until(ExpectedConditions.presenceOfElementLocated(addItem00;
+Webelement element = wait.Until(ExpectedConditions.presenceOfElementLocated(addItem));
+Other conditions that can be used with ExpectedConditions:
+elementToBeClickable
+visibilityOfElementLocated
+attributeContains
+alertIsPresent
+textToBePresentInElementLocated
+
+Dropdown Selections:
+Select dropDownName = new Select(driver.findElement(By.name("countries")));
+dropDownName.selectByVisibleText("India");
+dropDownName.selectByID("1");
+dropDownName.selectByValue("IND");
+
+Execute JavaScript in Selenium
+JavaScriptExecutor js = ((JavascriptExecutor) driver) //typecast the driver as js type
+js.executeScript("{java script to be executed}")
+
+Difference b/w close and quit command = close will close only currently focused browser instance, quit closes all instances.
+
+Frame navigation:
+driver.switchTo().frame("frameID");
+For locating a frame we can use the index (starting from 0) or it's name/ID
 
 ----------------------------------------------------------
 Insurance Tool Specific tools:
