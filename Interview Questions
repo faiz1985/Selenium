@@ -425,6 +425,10 @@ JavaScriptExecutor js = ((JavascriptExecutor) driver) //typecast the driver as j
 js.executeScript("{java script to be executed}")
 
 Difference b/w close and quit command = close will close only currently focused browser instance, quit closes all instances.
+Difference between navigate and get = get will wait for all elements to be loaded before executing next line of code. Also, navigate 
+can be used with other commands like back, forward, refresh etc.
+
+To handle multiple child windows, use the command getWindowHandles()
 
 Frame navigation:
 driver.switchTo().frame("frameID");
