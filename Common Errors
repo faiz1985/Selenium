@@ -49,3 +49,9 @@ To work with xlsx files, use the POI library
 11. org.openqa.selenium.SessionNotCreatedException: session not created: This version of ChromeDriver only supports Chrome version 75
 Solution - Ensure the chrome driver file and the chrome version are both supported by each other. If not sure, download latest version
 of both and run
+
+12. An internal error occurred during: "Launching gtwDB".
+org.testng.eclipse.maven.MavenTestNGLaunchConfigurationProvider.getClasspath(Lorg/eclipse/debug/core/ILaunchConfiguration;)Ljava/util/List;
+Solution - While installing TestNG, please uncheck the chck box for M2E Maven related one and continue the installation process. Restart the Eclipse and execute a test case
+If already installed, go to Help -> Eclipse Marketplace -> Installed -> Select TestNG and uncheck the "TestNG M2E (Maven) Integration and click 
+Next, finish. Restart eclipse and run
