@@ -1,0 +1,135 @@
+package gtwDB;
+
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.sql.*;
+
+public class gtwDBClass {
+String JDBCDriver, URL, DBName, DBUserName, DBPwd, DBQuery;
+ResultSet resultSet;
+Connection conn;
+
+	@BeforeTest
+	@Parameters({"JDBCDriver","URL", "DBName", "DBUserName", "DBPwd", "dbQuery"})
+	public void gtwDBData(String jdbcDriver, String url, String dbName, String dbUserName, String dbPwd, String dbQuery) throws IOException {
+		  
+		  //Properties prop = new Properties();
+		  //FileInputStream fis = new FileInputStream("C:\\Users\\FFarooq007\\eclipse-o3-workspace\\gtw-DB\\src\\gtwDB\\parameters.properties");
+		  //prop.load(fis);
+		  
+			JDBCDriver = jdbcDriver;//JDBCDriver = prop.getProperty("jdbcDriver");
+			URL =url; //URL = prop.getProperty("url");
+			DBName =  dbName;//DBName = prop.getProperty("dbName");
+			DBUserName = dbUserName;//DBUserName = prop.getProperty("dbUserName");
+			DBPwd = dbPwd;//DBPwd = prop.getProperty("dbPwd");
+			DBQuery = dbQuery; //prop.getProperty("query");
+		  
+			//System.out.println(DBQuery);
+	}
+	
+  @Test(priority=2)	
+  public void gtwDBPrintResults() throws SQLException {
+		  // WRITE COLUMN NAME
+      ResultSetMetaData rsmd = resultSet.getMetaData();
+          for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+        	System.out.print(rsmd.getColumnName(i));
+            System.out.print("\t");  
+          }
+          System.out.print("\n");
+          
+      // WRITE DATA
+      while (resultSet.next()) {
+          for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+              if (resultSet.getObject(i) != null) {
+                  String data = resultSet.getObject(i).toString().replaceAll("\t", "");
+                  System.out.print(data);
+                  System.out.print("\t");
+              } else {
+                  String data = "null";
+                  System.out.print(data);
+                  System.out.print("\t");
+              }
+
+          }
+          //new line entered after each row
+          System.out.print("\n");
+      }
+  }
+
+  @Test(priority=1)
+  public void gtwDBQueryRun() throws ClassNotFoundException, SQLException, IOException {
+	    
+	 conn = null;
+
+	 try {
+		 Class.forName(JDBCDriver);
+		 conn=DriverManager.getConnection(URL+DBName,DBUserName,DBPwd);
+		 
+		  Statement statement;
+		  statement = conn.createStatement();
+		  		
+		  //Start Timer
+		  long startTime = System.currentTimeMillis();
+		  
+		  //Execute Query
+		  resultSet = statement.executeQuery(DBQuery);
+		  
+		  //End Timer
+		  long endTime = System.currentTimeMillis();
+		  
+		  System.out.println("Query Execution Started at: " + startTime);
+		  System.out.println("Query Execution Completed at: " + endTime);
+		  //Create Reports based on timer calculations - TO BE DONE
+
+          System.out.println("Total time to execute Query: " + (endTime-startTime) + " milliseconds (" + ((endTime-startTime)/1000F) + " seconds) \n");
+	 }
+	 catch(SQLException ex){
+		 System.out.println("Error occurred while connecting to MYSQL DB");
+		 ex.printStackTrace();
+	 }
+	 
+  }
+  
+  @AfterTest
+  public void gtwDBCloseConnection() throws SQLException {
+	  
+	  if (conn.toString().length() <1) {
+		  //do nothing  
+	  }
+	  else{
+		  conn.close();
+	}
+}
+}
+  
+
+--------------------------------------------------------------------------------------------------------------------
+
+TestNG XML File (to run the tests and also to pass parameters):
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="gtw-DB">
+
+ <test name = "gtwDB">
+ 
+ <parameter name="JDBCDriver" value="oracle.jdbc.driver.OracleDriver"/>
+ <parameter name="URL" value="jdbc:oracle:thin:@//GTWCORED.cqdd3meiuw4v.us-east-1.rds.amazonaws.com:1521/"/>
+ <parameter name="DBName" value="GTWCORED"/>
+ <parameter name="DBUserName" value=""/>
+ <parameter name="DBPwd" value=""/>
+ 
+ <parameter name="dbQuery" value="SELECT  um.* , c.client_name, c.client_logo, c.client_css_file, c.client_datasource, c.client_active, c.client_san,c.client_gold_ds as client_gold_datasource
+FROM TGT_CLIENT c
+INNER JOIN TGT_CLIENT_USER_MAP um ON c.client_key = um.client_key
+AND um.active = 1
+AND um.sso_id = 400371334"/>
+     <classes>
+      <class name="gtwDB.gtwDBClass"/>
+    </classes>
+  </test> <!-- parametrizationTest -->
+</suite> <!-- parametrizationSuite --> 
