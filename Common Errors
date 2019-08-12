@@ -67,3 +67,8 @@ Add the Maven dependency as below (or download the jar and add it into the build
     <artifactId>javax.mail</artifactId>
     <version>1.6.0</version>
 </dependency>
+
+15. Could not find or load main class <packageName>.<className>
+Many solutions on the net, the one that worked for me - CLose eclipse, go to the workspace folder and delete .metadata folder, 
+open eclipse. If no projects are showing up, close eclipse again, restore the .metadata folder from recycle bin and open eclipse again. 
+This resovled the issue for me.
