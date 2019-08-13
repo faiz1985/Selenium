@@ -479,3 +479,13 @@ Supports the following functions:
 	Underwriting
 	Policy Administration
 	Claims Payout
+
+To read data from XML:
+Document doc;
+DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+DocumentBuilder builder = factory.newDocumentBuilder();                   
+
+//Parsing of xml is done here
+doc = builder.parse(new File("<Path of XML File>"));
+NodeList applicationElement = doc.getElementsByTagName(<tagName>);
+<variableName> = applicationElement.item(0).getTextContent().trim();
