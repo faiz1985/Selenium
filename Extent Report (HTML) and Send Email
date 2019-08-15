@@ -1,0 +1,122 @@
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+public class generateExtentReport
+{
+	static ExtentReports reports;
+    static ExtentTest test;
+	
+	@Test
+	public static void generateExtentReport(){
+		// Create an instance of ExtentsReports class and pass report storage path as a parameter
+        //reports = new ExtentReports(System.getProperty("user.dir") + "/HtmlReport/index.html", true);
+        reports = new ExtentReports("HtmlReport\\GTW Query Run Report.html", true);
+		
+		test = reports.startTest("<Test Name>", "<Test Description>");
+		
+		//INFO can be replaced with other paramters like ERROR, WARNING etc. depending on the requirements.
+		test.log(LogStatus.INFO, "<User Defined Description Text to populate on the report>");
+		//Create as many lines similar to the one above, as required at various steps in the test
+		
+		//Write all the report data into the HTML file
+        reports.endTest(test);
+        reports.flush();
+	}
+  
+  @Test
+  public static void sendEmail(){
+    static String subject = "<Email Subject>";
+	  static String attachmentFile = "<path where the file is located>";
+	  static String message = "<Email Body Message>"
+    
+    Message msg;
+		Properties newprops = new Properties();
+		newprops.setProperty("mail.smtp.host", "smtp.gmail.com");
+		newprops.setProperty("mail.port", "465");
+		newprops.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");   
+		newprops.setProperty("mail.smtp.socketFactory.fallback", "false");   
+		newprops.setProperty("mail.smtp.socketFactory.port", "465");
+		Session session;
+			newprops.put("mail.smtp.user","<fromEmailID>");
+			newprops.put("mail.smtp.socketFactory.port", "465");
+			newprops.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+			newprops.put("mail.smtp.auth", "true");
+			newprops.put("mail.smtp.port", "465");
+			newprops.put("mail.smtp.auth", "true");
+			newprops.put("mail.debug", "false"); 
+			newprops.put("mail.smtp.EnableSSL.enable","true");
+			newprops.put("mail.smtp.starttls.enable", "true");
+			newprops.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			session = Session.getInstance(newprops, new javax.mail.Authenticator() {
+				@Override
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication("<fromEmailID>", "<fromEmailPWD>");
+				}
+			});
+		
+		try {
+
+			msg = new MimeMessage(session);
+
+			InternetAddress addressFrom = new InternetAddress("<fromEmailID>");
+			msg.setFrom(addressFrom);
+
+      String emailRecipients = "a@a.com,b@b.com,c@c.com";
+			String[] recipients = emailRecipients.split(",");
+			
+			String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+			 
+			Pattern pattern = Pattern.compile(regex);
+			
+			InternetAddress[] addressTo = new InternetAddress[recipients.length];
+			for (int ii = 0; ii < recipients.length; ii++) {
+				 Matcher matcher = pattern.matcher(recipients[ii].trim());
+				 if(matcher.matches())
+					 addressTo[ii] = new InternetAddress(recipients[ii]);
+				 else {
+					 System.out.println("Invalid email Id : "+recipients[ii]);
+				 }
+			}
+
+			msg.setRecipients(Message.RecipientType.TO, addressTo);
+
+			
+			msg.setSubject(subject);
+
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart.setContent(message, "text/html");
+
+			Multipart multipart = new MimeMultipart();
+			multipart.addBodyPart(messageBodyPart);
+
+			messageBodyPart = new MimeBodyPart();
+			DataSource tReport = new FileDataSource(htmlFile);
+			messageBodyPart.setDataHandler(new DataHandler(tReport));
+			messageBodyPart.setFileName(tReport.getName());
+			multipart.addBodyPart(messageBodyPart);
+		
+			msg.setSentDate(new Date());
+			msg.setContent(multipart);
+			System.out.println("\nSending Email...");
+			Transport.send(msg);
+			System.out.println("Report E-mail Sent.");
+		} catch (Exception e) {
+			System.out.println("Unable to send mail");
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+  }
+}
