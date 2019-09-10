@@ -76,6 +76,7 @@ This resovled the issue for me.
 16. If WebDriver and/or Chrome Driver has a red underline and hovering the mouse shows "Cannot be resolved to a type"
 Solution - Add required Jars into the build path. Alternatively, click on the Eclipse recommended solutions and chose 'fix project setup'
 and select one of the options which add the missing jar into build path.
+If it is a Maven project, add the dependency for the missing JAR, most likely selenium standalone server jar or something similar
 
 17. org.openqa.selenium.SessionNotCreatedException: session not created
 Verify Chrome version, and download the chrome driver which supports this version. As an example, Chrome v76 will give this error if the
