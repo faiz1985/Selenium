@@ -72,3 +72,7 @@ Add the Maven dependency as below (or download the jar and add it into the build
 Many solutions on the net, the one that worked for me - CLose eclipse, go to the workspace folder and delete .metadata folder, 
 open eclipse. If no projects are showing up, close eclipse again, restore the .metadata folder from recycle bin and open eclipse again. 
 This resovled the issue for me.
+
+16. If WebDriver and/or Chrome Driver has a red underline and hovering the mouse shows "Cannot be resolved to a type"
+Solution - Add required Jars into the build path. Alternatively, click on the Eclipse recommended solutions and chose 'fix project setup'
+and select one of the options which add the missing jar into build path.
