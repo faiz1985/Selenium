@@ -87,3 +87,7 @@ driver version is 77 or beyond
 18. org.openqa.selenium.WebDriverException: invalid argument
 Solution 1 - Ensure the chromedriver.exe argument name is exactly the same (spelling and casing) as the actual file name
 Solution 2 - Ensure the URL provided is prefixed with https://
+
+19. java.lang.NoClassDefFoundError: com/google/common/collect/ImmutableSet
+Download and add to build path (or add as dependency if Maven project) the latest version of guava.jar which is now an external
+dependency and needs to be defined explicitly
