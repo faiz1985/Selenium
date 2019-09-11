@@ -406,7 +406,9 @@ popup.sendKeys("abcd") //to enter data
 b) Dealing with Java applet data entry / actions on web page. Resolved by implementing mSTAX framework which is IBM proprietary, so
 will not be able to talk more on it
 c) Sync issues, since sometimes a page can take longer to load so the elements might not be found. Use below command:
-Webelement element = wait.Until(ExpectedConditions.presenceOfElementLocated(addItem));
+WebDriverWait wait = new WebDriverWait(driver,10);
+Webelement element = wait.Until(ExpectedConditions.presenceOfElementLocated(<Element Locator>));
+
 Other conditions that can be used with ExpectedConditions:
 elementToBeClickable
 visibilityOfElementLocated
