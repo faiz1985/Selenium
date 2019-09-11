@@ -89,6 +89,8 @@ Solution 1 - Ensure the chromedriver.exe argument name is exactly the same (spel
 Solution 2 - Ensure the URL provided is prefixed with https://
 
 19. java.lang.NoClassDefFoundError: com/google/common/collect/ImmutableSet
+OR
+java.lang.NoSuchMethodError: com.google.common.util.concurrent.SimpleTimeLimiter.create(Ljava/util/concurrent/ExecutorService;)Lcom/google/common/util/concurrent/SimpleTimeLimiter;
 Download and add to build path (or add as dependency if Maven project) the latest version of guava.jar which is now an external
 dependency and needs to be defined explicitly
 
