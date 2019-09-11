@@ -94,3 +94,9 @@ dependency and needs to be defined explicitly
 
 20. java.lang.NoClassDefFoundError: okhttp3/ConnectionPool
 Download and add to build path (or add as dependency if Maven project) the latest version of okhttp-3.10.0.jar and okio-1.14.1.jar
+
+21. java.lang.NoClassDefFoundError: org/apache/commons/exec/Executor
+.
+.
+Caused by: java.lang.ClassNotFoundException: org.apache.commons.exec.Executor
+Download and add to build path (or add as dependency if Maven project) the latest version of commons-exec-<version>.jar
