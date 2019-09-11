@@ -102,3 +102,6 @@ Download and add to build path (or add as dependency if Maven project) the lates
 .
 Caused by: java.lang.ClassNotFoundException: org.apache.commons.exec.Executor
 Download and add to build path (or add as dependency if Maven project) the latest version of commons-exec-<version>.jar
+
+22. java.lang.NoClassDefFoundError: org/json/JSONObject
+Download and add to build path (or add as dependency if Maven project) the latest version of json-<version>.jar
