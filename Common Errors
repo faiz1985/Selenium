@@ -91,3 +91,6 @@ Solution 2 - Ensure the URL provided is prefixed with https://
 19. java.lang.NoClassDefFoundError: com/google/common/collect/ImmutableSet
 Download and add to build path (or add as dependency if Maven project) the latest version of guava.jar which is now an external
 dependency and needs to be defined explicitly
+
+20. java.lang.NoClassDefFoundError: okhttp3/ConnectionPool
+Download and add to build path (or add as dependency if Maven project) the latest version of okhttp-3.10.0.jar and okio-1.14.1.jar
