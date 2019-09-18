@@ -171,6 +171,26 @@ Selenium also allows the use of multiple identifiers in case one of the identifi
 These are written by deriving from HTML path. For the above xpath, the HTML structure (locate on page inspect) is similar to:
 <input id="username class="classname" .....> </input>
 Relative xpath is more preferred since it can identify elements even if UI changes occur
+Another way to locate element when we are tring to click a data cell element in a table based on value of another data cell element
+of the same row in the table:
+//table[@class='resultsTable']//tr[td[.='NewAge'] and td/a[.='Protractor']]
+<table width="100%" border="0" cellspacing="0" cellpadding="2" class="resultsTable"><tr><td>
+        <a href = "Mytitle.aspx">Protractor</a>
+        <td>NewAge</td>
+        </tr>
+    <tr><td>
+
+//table[@id='tiAnalysisTable']//tr[td[.='Aviation'] and td/i[@class='fa fa-link']]
+<table id="tiAnalysisTable" class="table table-bordered table-striped parent-table table-responsive table-condensed dataTable no-footer" role="grid" style="width: 100%;">
+<tr role="row" class="even">
+<td>
+<i class="fa fa-link"> ::before </i>
+</td>
+<td>2017</td>
+<td>Aviation</td>
+<td>other data</td>
+</tr>
+</table>
 
 Categories of Selenium webDriver Commands:
 1. Browser Regular Commands
