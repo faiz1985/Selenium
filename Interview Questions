@@ -20,12 +20,34 @@ These are written by deriving from HTML path. For the above xpath, the HTML stru
 <input id="username class="classname" .....> </input>
 Relative xpath is more preferred since it can identify elements even if UI changes occur
 
+Another way to locate element when we are tring to click a data cell element in a table based on value of another data cell element
+of the same row in the table:
+//table[@class='resultsTable']//tr[td[.='NewAge'] and td/a[.='Protractor']]
+<table width="100%" border="0" cellspacing="0" cellpadding="2" class="resultsTable"><tr><td>
+        <a href = "Mytitle.aspx">Protractor</a>
+        <td>NewAge</td>
+        </tr>
+    <tr><td>
+
+//table[@id='tiAnalysisTable']//tr[td[.='Aviation'] and td/i[@class='fa fa-link']]
+<table id="tiAnalysisTable" class="table table-bordered table-striped parent-table table-responsive table-condensed dataTable no-footer" role="grid" style="width: 100%;">
+<tr role="row" class="even">
+<td>
+<i class="fa fa-link"> ::before </i>
+</td>
+<td>2017</td>
+<td>Aviation</td>
+<td>other data</td>
+</tr>
+</table>
+
 To locate an element partially matching its attribute values in xpath, use the contains method. This is useful when attributes have
 dynamic values but a certain part is still constant. Eg:
 xPathExpression = //*[contains(@name, 'user')]
 
 To locate element using text in xpath:
 xPathExpression = //*[text()='username']
+
 
 Difference between cssSelector and xPath - xPath allows to traverse up or down in the HTML whereas cssSelector allows only downward navigation
 
