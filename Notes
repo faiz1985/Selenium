@@ -158,7 +158,19 @@ driver.findElement(By.partialLinkText("Gma")).click();
 
 Similarly, partialLinkText, cssSelector and xpath
 
-xpath is used to find the location of elements on the web page using HTML DOM structure. It is slower in execution, so should be the last preference.
+
+xpath - used to find the location of elements on the web page using HTML DOM structure. It is slower in execution, so should be the 
+last preference.
+
+Absolute xpath - defines the path of the element beginning from the root node and traverses through all child nodes. Uses / only/ Eg - 
+html/body/div/div[2]/div/div/div/div/div[1]/div/input
+Relative xpath - defines the path of the element beginning from anywhere within the HTML document. Uses // and not / .Eg - 
+//input[@id = 'username']
+Selenium also allows the use of multiple identifiers in case one of the identifier is repeated multiple times but the combination is unique:
+//input[@id = 'username' and @class='classname']
+These are written by deriving from HTML path. For the above xpath, the HTML structure (locate on page inspect) is similar to:
+<input id="username class="classname" .....> </input>
+Relative xpath is more preferred since it can identify elements even if UI changes occur
 
 Categories of Selenium webDriver Commands:
 1. Browser Regular Commands
