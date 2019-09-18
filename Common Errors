@@ -105,3 +105,42 @@ Download and add to build path (or add as dependency if Maven project) the lates
 
 22. java.lang.NoClassDefFoundError: org/json/JSONObject
 Download and add to build path (or add as dependency if Maven project) the latest version of json-<version>.jar
+
+23. org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+This happens when navigating through table contents and trying to break out in between. Selenium still tries to locate the remaining
+table data even though we exited, hence this error. A quick fix for this is to perform the action on desired element after all iterations
+are completed. Eg., in below code, we are searching through entire table for a row containing the word "Aviation" and clicking on the
+edit link/button of that particular row:
+// Get all the table row elements from the table
+ List<WebElement> allRows = driver.findElements(By.xpath("//table[@id='tiAnalysisTable']//tr"));
+ int rowNum=0;
+ // Iterate over them and get all the cells
+ for (WebElement row : allRows) {
+     List<WebElement> cells = row.findElements(By.tagName("td"));
+     // Iterate thru the contents of each cell
+     for (WebElement cell : cells) {        
+     //System.out.println(cell.getText());
+     if(cell.getText().contains("Aviation")) {
+     driver.findElement(By.xpath("(//i[@class='fa fa-link'])["+rowNum+"]")).click();
+         break;
+     }
+ }
+     rowNum++;
+ }
+
+Overcome this error by performing the click after / outside the for loop:
+		  List<WebElement> allRows = driver.findElements(By.xpath("//table[@id='tiAnalysisTable']//tr")); 
+		  int rowNum=0;
+		  WebElement editIcon = null;
+		  for (WebElement row : allRows) { 
+		      List<WebElement> cells = row.findElements(By.tagName("td")); 
+		      for (WebElement cell : cells) { 
+		      if(cell.getText().contains("Aviation")) {
+                  editIcon = driver.findElement(By.xpath("(//i[@class='fa fa-link'])[" +rowNum+ "]"));
+		    	  break;
+		      }
+		  }
+		      rowNum++;
+		  }
+		  editIcon.click();
+
