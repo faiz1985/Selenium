@@ -168,6 +168,8 @@ Relative xpath - defines the path of the element beginning from anywhere within 
 //input[@id = 'username']
 Selenium also allows the use of multiple identifiers in case one of the identifier is repeated multiple times but the combination is unique:
 //input[@id = 'username' and @class='classname']
+Another way of doing this is using index numbers:
+(//input[@id = 'username'])[0] - this will return the first element matching the xpath specified.
 These are written by deriving from HTML path. For the above xpath, the HTML structure (locate on page inspect) is similar to:
 <input id="username class="classname" .....> </input>
 Relative xpath is more preferred since it can identify elements even if UI changes occur
