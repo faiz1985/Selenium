@@ -144,3 +144,8 @@ Overcome this error by performing the click after / outside the for loop:
 		  }
 		  editIcon.click();
 
+24. If element is visibile through the Inspect Page but same element locator is not working / able to locate element through the
+script, even though it is visible on the screen
+Solution - This happens when the web page has multiple frames. Ensure to switch to appropriate frame and then perform the operation.
+driver.switchTo().frame(<frameIndex OR frameName>);
+
