@@ -1299,3 +1299,32 @@ DocumentBuilder builder = factory.newDocumentBuilder();
 doc = builder.parse(new File("<Path of XML File>"));
 NodeList applicationElement = doc.getElementsByTagName(<tagName>);
 <variableName> = applicationElement.item(0).getTextContent().trim();
+
+To store cookies and log in information from one session and open in different browser instance:
+driver.get("https://www.twitter.com");
+		  Thread.sleep(500);
+		  WebElement username = driver.findElement(By.xpath("//input[@name='session[username_or_email]']"));
+		  username.sendKeys("@gmail.com");
+		  WebElement pwd = driver.findElement(By.xpath("//input[@name='session[password]']"));
+		  pwd.sendKeys("");
+		  WebElement loginBtn = driver.findElement(By.xpath("//input[@value='Log in']"));
+		  loginBtn.click();
+		  Thread.sleep(2500);
+		  Set<Cookie> allCookies = driver.manage().getCookies();
+		  driver.close();
+		  driver=new ChromeDriver();
+		  driver.navigate().to("https://www.twitter.com"); //navigate to dummy URL to open a browser instance
+		  //load all cookies
+		  for(Cookie cookie : allCookies) {
+			  driver.manage().addCookie(cookie);
+		  }
+		  Thread.sleep(500);
+		  
+		  //print all cookies to compare if they match with the first instance
+		  //Set<Cookie> allCookies2 = driver.manage().getCookies();
+		  //System.out.println(allCookies2);
+		  
+		  driver.navigate().to("https://www.twitter.com/home"); //navigate to the required URL now, since all cookies are loaded
+		  Thread.sleep(3000);
+		  
+		  driver.close();
