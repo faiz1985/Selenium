@@ -149,3 +149,8 @@ script, even though it is visible on the screen
 Solution - This happens when the web page has multiple frames. Ensure to switch to appropriate frame and then perform the operation.
 driver.switchTo().frame(<frameIndex OR frameName>);
 
+25. Red underline below the .until method with this error (or similar):
+Method until(Function) in the type FluentWait is not applicable for the arguments
+Solution 1 - Ensure multiple guava.jar files are not present in build path and/or maven's pom.xml
+Solution 2 - Try removing all references to the guava.jar from build path and/or maven's pom.xml
+
