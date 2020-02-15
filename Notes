@@ -1328,3 +1328,13 @@ driver.get("https://www.twitter.com");
 		  Thread.sleep(3000);
 		  
 		  driver.close();
+
+To Copy Project from Git to Eclipse:
+1. Make sure project (created by others) is on Git
+2. In Eclipse, open the 'Git Repositories' tab at the bottom. If this is not present, ensure GIt plugin is installed; the tab view is enabled.
+3. Click on the option 'Clone a Git Repository and add clone to this view'
+4. Enter URI. This can be obtained from Git by going into the project, top right side Clone -> Clone with SSH.
+5. After the import is complete, right click project and select iMport Projects
+6. If any POM errors are shown, right click project from the project explorer view and go to Maven->Update Project. Try without clicking
+offline mode, if it does not work, click on the offline mode and snapshots checkbox and try again.
+
