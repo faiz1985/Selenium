@@ -154,3 +154,6 @@ Method until(Function) in the type FluentWait is not applicable for the argument
 Solution 1 - Ensure multiple guava.jar files are not present in build path and/or maven's pom.xml
 Solution 2 - Try removing all references to the guava.jar from build path and/or maven's pom.xml
 
+26. Exception in thread "main" java.lang.NoClassDefFoundError: com/beust/jcommander/ParameterException
+Download the jcommander jar and add to build path (or) add to Maven dependency
+
