@@ -157,3 +157,6 @@ Solution 2 - Try removing all references to the guava.jar from build path and/or
 26. Exception in thread "main" java.lang.NoClassDefFoundError: com/beust/jcommander/ParameterException
 Download the jcommander jar and add to build path (or) add to Maven dependency
 
+27. Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/poi/ss/formula/udf/UDFFinder
+Ensure the poi and poiooxml jars are same version eg. 3.9. Different versions of these cause conflcts leadng to this error
+
